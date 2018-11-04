@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @residence.nombre %>
+</p>
+
+<p>
+  <strong>Pais:</strong>
+  <%= @residence.pais %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @residence.provincia %>
+</p>
+
+<p>
+  <strong>Partido:</strong>
+  <%= @residence.partido %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @residence.ciudad %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @residence.direccion %>
+</p>
+
+<p>
+  <strong>Img link:</strong>
+  <%= @residence.img_link %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @residence.desc %>
+</p>
+
+<%= link_to 'Edit', edit_residence_path(@residence) %> |
+<%= link_to 'Back', residences_path %>

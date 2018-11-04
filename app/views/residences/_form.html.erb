@@ -1,0 +1,57 @@
+<%= form_with(model: residence, local: true) do |form| %>
+  <% if residence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(residence.errors.count, "error") %> prohibited this residence from being saved:</h2>
+
+      <ul>
+      <% residence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pais %>
+    <%= form.text_field :pais %>
+  </div>
+
+  <div class="field">
+    <%= form.label :provincia %>
+    <%= form.text_field :provincia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :partido %>
+    <%= form.text_field :partido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ciudad %>
+    <%= form.text_field :ciudad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_link %>
+	<%= form.url_field :img_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc %>
+    <%= form.text_area :desc %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
