@@ -1,0 +1,13 @@
+<div class="listaResidencia">
+<div class="list-group">
+  <% residencias.each do |residencia| %>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= residencia.nombre %></h5>
+    </div>
+    <p class="mb-1"><%=residencia.desc%></p>
+    <small><%= residencia.ciudad %>, <%= residencia.partido %>, <%= residencia.provincia %>,  <%= residencia.pais %></small>
+  </a>
+  <% end %>
+</div>
+</div>
