@@ -1,70 +1,93 @@
 <div class="container">
 
-<%= form_with(model: residence, local: true) do |form| %>
+	<%= form_with(model: residence, local: true) do |form| %>
 
-  <% if residence.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(residence.errors.count, "error") %> prohibited this residence from being saved:</h2>
+		<% if residence.errors.any? %>
 
-      <ul>
-      <% residence.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<div id="error_explanation">
 
-	<div class="form-group">
-    	<%= form.label :nombre %>
-    	<%= form.text_field :nombre, class: 'form-control', placeholder: 'Las rosas', required:true %>
-	</div>
+				<h2><%= pluralize(residence.errors.count, "error") %> prohibited this residence from being saved:</h2>
 
-	<div class="form-group form-row">
+				<ul>
+					<% residence.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
 
-		<div class="col">
-    		<%= form.label :pais %>
-			<%= form.select :pais, ['Argentina'], {}, class: 'custom-select' %>
+			</div>
+
+		<% end %>
+
+		<div class="form-group">
+	    	<%= form.label :nombre %>
+	    	<%= form.text_field :nombre, class: 'form-control', placeholder: 'Las rosas', required:true %>
 		</div>
 
-		<div class="col">
-    		<%= form.label :provincia %>
-    		<%= form.select :provincia, @provincias, {}, class: 'custom-select' %>
+		<div class="form-group form-row">
+
+			<div class="col">
+	    		<%= form.label :provincia %>
+	    		<%= form.text_field :provincia, class: 'form-control', placeholder: 'Buenos Aires', required:true %>
+			</div>
+
+			<div class="col">
+	    		<%= form.label :partido %>
+	    		<%= form.text_field :partido, class: 'form-control', placeholder: 'Tandil', required:true %>
+			</div>
+
+			<div class="col">
+				<%= form.label 'Localidad' %>
+				<%= form.text_field :ciudad, class: 'form-control', placeholder: 'Gardey', required:true %>
+			</div>
+
+			<div class="col">
+		      <%= form.label 'Direccion' %>
+		      <%= form.text_field :direccion, class: 'form-control', placeholder: 'Calle 1 n°111', required:true %>
+		    </div>
+
 		</div>
 
-		<div class="col">
-    		<%= form.label :partido %>
-    		<%= form.select :partido, ['Argentina'], {}, class: 'custom-select' %>
+		<div class="form-group">
+			<%= form.label 'URL Imagen' %>
+			<%= form.url_field :img_link, class: 'form-control', placeholder: 'http://host.com/imagen.png', required:true %>
 		</div>
 
-	</div>
-
-	<div class="form-group form-row">
-
-		<div class="col">
-			<%= form.label :ciudad %>
-			<%= form.select :ciudad, ['Argentina'], {}, class: 'custom-select' %>
+		<div class="form-group">
+			<%= form.label 'Descripcion' %>
+			<%= form.text_area :desc, class: 'form-control', placeholder: 'La residencia cuenta con ...', required:true %>
 		</div>
 
-		<div class="col">
-	      <%= form.label 'Direccion' %>
-	      <%= form.text_field :direccion, class: 'form-control', placeholder: 'Calle 111', required:true %>
-	    </div>
+		<div class="actions">
+			<%= form.submit 'Crear residencia', class: 'btn btn-primary' %>
+		</div>
 
-	</div>
+	<% end %>
 
-  <div class="form-group">
-    <%= form.label 'URL Imagen' %>
-	<%= form.url_field :img_link, class: 'form-control', placeholder: 'http://host.com/imagen.png', required:true %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label 'Descripcion' %>
-    <%= form.text_area :desc, class: 'form-control', placeholder: 'La residencia cuenta con ...', required:true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Crear residencia', class: 'btn btn-primary' %>
-  </div>
-
-<% end %>
 </div>
+
+<!--<script>
+	function populate(provincia, partido, ciudad){
+
+		var provincia = document.getElementById(provincia);
+		var partido = document.getElementById(partido);
+		var ciudad  = document.getElementById(ciudad);
+
+		partido.innerHTML = "";
+		ciudad.innerHTML = "";
+
+		if(s1.value == "Chevy"){
+			var optionArray = ["|","camaro|Camaro","corvette|Corvette","impala|Impala"];
+		} else if(s1.value == "Dodge"){
+			var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+		} else if(s1.value == "Ford"){
+			var optionArray = ["|","mustang|Mustang","shelby|Shelby"];
+		}
+		for(var option in optionArray){
+			var pair = optionArray[option].split("|");
+			var newOption = document.createElement("option");
+			newOption.value = pair[0];
+			newOption.innerHTML = pair[1];
+			s2.options.add(newOption);
+		}
+	}
+</script>-->
