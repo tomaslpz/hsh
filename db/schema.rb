@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_11_06_175125) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "residences", force: :cascade do |t|
     t.string "nombre"
     t.string "provincia"
