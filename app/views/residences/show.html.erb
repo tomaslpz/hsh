@@ -1,39 +1,47 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @residence.nombre %>
-</p>
+<div class="card rounded-0">
+	<div class="card-header d-flex flex-column flex-md-row align-items-center">
+		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
+			<%= @residence.nombre %>
+		</h5>
+		<%= link_to 'Modificar', edit_residence_path(@residence), class: 'btn btn-warning mr-2' %>
+		<button type="button" class="btn btn-danger">Eliminar</button>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<img class="card-img-top col-6" src="<%= @residence.img_link %>">
+			<ul class="list-group list-group-flush col-6">
+				<li class="list-group-item">
+					<p><%= @residence.desc %></p>
+					<p class="font-weight-bold text-capitalize m-0">
+						<%= @residence.direccion %><span class="text-muted">, <%= @residence.ciudad %>, <%= @residence.partido %>, <%= @residence.provincia %></span>
+					</p>
+				</li>
+				<li class="list-group-item text-capitalize">
+					<button type="button" class="btn btn-primary font-weight-bold">Participar de la subasta</button>
+					<button type="button" class="btn btn-success font-weight-bold">Adjudicarme esta residencia!</button>
+				</li>
+				<li class="list-group-item">
+					<div id="datetimepicker12"></div>
+					<script type="text/javascript">
 
-<p>
-  <strong>Provincia:</strong>
-  <%= @residence.provincia %>
-</p>
+						$(function () {
+							$('#datetimepicker12').datetimepicker({
+								inline: true,
+								sideBySide: true,
+								format: 'MM/dd/YYYY',
+								daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
+								minDate: new Date()
+							});
+						});
+					
+					</script>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Partido:</strong>
-  <%= @residence.partido %>
-</p>
-
-<p>
-  <strong>Ciudad:</strong>
-  <%= @residence.ciudad %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @residence.direccion %>
-</p>
-
-<p>
-  <strong>Img link:</strong>
-  <%= @residence.img_link %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @residence.desc %>
-</p>
-
-<%= link_to 'Edit', edit_residence_path(@residence) %> |
-<%= link_to 'Back', residences_path %>
+<!-- |
+<%= link_to 'Back', residences_path %>-->
