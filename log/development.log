@@ -1,0 +1,3145 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (104.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (133.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateResidences (20181104204747)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "pais" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181104204747_create_residences.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181104204747"]]
+  ↳ bin/rails:9
+  [1m[35m (86.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemovePaisFromResidence (20181106175125)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aresidences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "pais" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aresidences" ("id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "residences" ("id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181106175125"]]
+  ↳ bin/rails:9
+  [1m[35m (81.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 21:50:47.799272"], ["updated_at", "2018-11-07 21:50:47.799272"]]
+  ↳ bin/rails:9
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20181107231912)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232219)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232219_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232219_create_admins.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181107232219"]]
+  ↳ bin/rails:9
+  [1m[35m (168.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (128.3ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (197.1ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (133.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (219.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (108.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (124.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:39:55.015011"], ["updated_at", "2018-11-07 23:39:55.015011"]]
+  ↳ db/schema.rb:13
+  [1m[35m (97.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (120.5ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (117.8ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (111.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (87.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (78.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (127.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:39:55.784574"], ["updated_at", "2018-11-07 23:39:55.784574"]]
+  ↳ db/schema.rb:13
+  [1m[35m (52.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (1.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2018-11-07 23:39:55.843279"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (707.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107232410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107232410_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (121.1ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (119.9ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (121.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (79.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (88.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (117.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:42:50.515715"], ["updated_at", "2018-11-07 23:42:50.515715"]]
+  ↳ db/schema.rb:13
+  [1m[35m (52.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (79.2ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (118.8ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (124.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (96.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (85.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (107.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:42:51.201253"], ["updated_at", "2018-11-07 23:42:51.201253"]]
+  ↳ db/schema.rb:13
+  [1m[35m (73.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2018-11-07 23:42:51.280120"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (87.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (108.0ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (86.2ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (103.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (82.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (90.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (112.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (5.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:44:43.605751"], ["updated_at", "2018-11-07 23:44:43.605751"]]
+  ↳ db/schema.rb:13
+  [1m[35m (88.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (120.1ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  ↳ db/schema.rb:20
+  [1m[35m (120.7ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:20
+  [1m[35m (124.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (106.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181107232219)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (100.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181104204747),
+(20181106175125);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (134.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:44:44.427084"], ["updated_at", "2018-11-07 23:44:44.427084"]]
+  ↳ db/schema.rb:13
+  [1m[35m (104.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2018-11-07 23:44:44.536882"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (114.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107234425)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107234425_create_admins.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107234425_create_admins.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (146.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (137.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateResidences (20181104204747)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "pais" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181104204747_create_residences.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181104204747"]]
+  ↳ bin/rails:9
+  [1m[35m (90.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemovePaisFromResidence (20181106175125)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aresidences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "pais" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aresidences" ("id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "residences" ("id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181106175125"]]
+  ↳ bin/rails:9
+  [1m[35m (83.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107234425)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107234425_create_admins.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181107234425"]]
+  ↳ bin/rails:9
+  [1m[35m (106.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-07 23:46:26.785824"], ["updated_at", "2018-11-07 23:46:26.785824"]]
+  ↳ bin/rails:9
+  [1m[35m (88.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Create (0.8ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "12K2"], ["created_at", "2018-11-07 23:48:01.163967"], ["updated_at", "2018-11-07 23:48:01.163967"]]
+  [1m[35m (104.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Create (0.7ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "HOlA"], ["created_at", "2018-11-07 23:50:59.041625"], ["updated_at", "2018-11-07 23:50:59.041625"]]
+  [1m[35m (106.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Create (1.6ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "12345678"], ["created_at", "2018-11-07 23:52:58.538239"], ["updated_at", "2018-11-07 23:52:58.538239"]]
+  [1m[35m (57.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddIndexToAdminsCodigo (20181107235902)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddIndexToAdminsCodigo (20181107235902)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181107235902_add_index_to_admins_codigo.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_codigo" ON "admins" ("codigo")[0m
+  ↳ db/migrate/20181107235902_add_index_to_admins_codigo.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181107235902"]]
+  ↳ bin/rails:9
+  [1m[35m (87.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Create (0.7ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "1235FF324"], ["created_at", "2018-11-08 00:13:06.591933"], ["updated_at", "2018-11-08 00:13:06.591933"]]
+  [1m[35m (157.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Create (1.0ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "1235FF324"], ["created_at", "2018-11-08 00:13:22.373180"], ["updated_at", "2018-11-08 00:13:22.373180"]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 21:43:07 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mariano/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 2584ms (Views: 2567.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-11-07 21:43:31 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/new"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/show" for 127.0.0.1 at 2018-11-07 21:44:10 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/1/show" for 127.0.0.1 at 2018-11-07 21:46:15 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/1/show" for 127.0.0.1 at 2018-11-07 21:46:34 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/show" for 127.0.0.1 at 2018-11-07 21:46:38 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/new" for 127.0.0.1 at 2018-11-07 21:46:43 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/new"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admin/1" for 127.0.0.1 at 2018-11-07 21:46:51 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/1"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admin/show" for 127.0.0.1 at 2018-11-07 21:46:55 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins/1/show" for 127.0.0.1 at 2018-11-07 21:47:02 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admins/1/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admin/new" for 127.0.0.1 at 2018-11-07 21:47:13 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/new"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins/new" for 127.0.0.1 at 2018-11-07 21:47:16 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 60ms (Views: 58.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:47:22 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `codigo' for nil:NilClass):
+    1: <% @admin.codigo%>
+  
+app/views/admins/show.html.erb:1:in `_app_views_admins_show_html_erb___3932832073050256793_69883594413420'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:47:45 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `codigo' for nil:NilClass):
+    1: <% @admin.codigo %>
+  
+app/views/admins/show.html.erb:1:in `_app_views_admins_show_html_erb___3932832073050256793_69883594263480'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:48:31 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mariano/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `codigo' for nil:NilClass):
+    1: <% @admin.codigo %>
+  
+app/views/admins/show.html.erb:1:in `_app_views_admins_show_html_erb__838452116229273932_46938829370840'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:49:36 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+Completed 404 Not Found in 6ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin without an ID):
+  
+app/controllers/admins_controller.rb:8:in `show'
+Started GET "/admins1//show" for 127.0.0.1 at 2018-11-07 21:50:22 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admins1/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins/1/show" for 127.0.0.1 at 2018-11-07 21:50:28 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admins/1/show"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:50:33 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin without an ID):
+  
+app/controllers/admins_controller.rb:8:in `show'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:51:20 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+Completed 404 Not Found in 7ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=codigo):
+  
+app/controllers/admins_controller.rb:8:in `show'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:51:52 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" ORDER BY "admins"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 339ms (Views: 327.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:52:25 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+Completed 404 Not Found in 5ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=codigo):
+  
+app/controllers/admins_controller.rb:8:in `show'
+Started GET "/admins/show" for 127.0.0.1 at 2018-11-07 21:53:15 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+Completed 404 Not Found in 10ms (ActiveRecord: 1.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=show):
+  
+app/controllers/admins_controller.rb:8:in `show'
+Started GET "/admins/1" for 127.0.0.1 at 2018-11-07 21:53:57 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 63ms (Views: 52.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 21:53:59 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 48ms (Views: 45.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 21:55:00 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 39ms (Views: 37.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 21:55:49 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 46ms (Views: 44.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 21:58:13 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:05:29 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `codigo' for nil:NilClass):
+    1: 
+    2: 
+    3: <% provide(:title , @user.codigo) %>
+    4: <h1>
+    5:    <% gravatar_for @admin %>
+    6:    <%= @admin.codigo %>
+  
+app/views/admins/show.html.erb:3:in `_app_views_admins_show_html_erb__838452116229273932_69869655742020'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:06:04 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (23.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.2ms)
+
+
+  
+LoadError (library not found for class Digest::M5 -- digest/m5):
+  
+app/helpers/admins_helper.rb:5:in `gravatar_for'
+app/views/admins/show.html.erb:5:in `_app_views_admins_show_html_erb__838452116229273932_69869595221360'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:07:04 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.2ms)
+
+
+  
+LoadError (library not found for class Digest::M5 -- digest/m5):
+  
+app/helpers/admins_helper.rb:5:in `gravatar_for'
+app/views/admins/show.html.erb:5:in `_app_views_admins_show_html_erb__838452116229273932_69869761695760'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:07:50 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.3ms)
+
+
+  
+LoadError (library not found for class Digest::M5 -- digest/m5):
+  
+app/helpers/admins_helper.rb:5:in `gravatar_for'
+app/views/admins/show.html.erb:5:in `_app_views_admins_show_html_erb__838452116229273932_69869601635100'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:08:46 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Admin:0x00007f17a48afee0>):
+    2: 
+    3: <% provide(:title , @admin.codigo) %>
+    4: <h1>
+    5:    <% gravatar_for @admin %>
+    6:    <%= @admin.codigo %>
+    7: </h1>
+  
+app/helpers/admins_helper.rb:8:in `gravatar_for'
+app/views/admins/show.html.erb:5:in `_app_views_admins_show_html_erb__838452116229273932_69869760771740'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:09:01 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 94ms (Views: 77.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:09:21 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 71ms (Views: 67.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:11:17 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (1.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 59ms (Views: 42.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:11:57 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 63ms (Views: 48.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:12:48 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 61ms (Views: 46.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:13:26 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 49ms (Views: 35.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:15:01 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 130ms (Views: 106.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:16:51 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into String):
+    2: 
+    3: <% provide(:title , @admin.codigo) %>
+    4: <h1>
+    5:    <%= gravatar_for @admin %>
+    6:    <%= @admin.codigo %>
+    7: </h1>
+  
+app/helpers/admins_helper.rb:7:in `+'
+app/helpers/admins_helper.rb:7:in `gravatar_for'
+app/views/admins/show.html.erb:5:in `_app_views_admins_show_html_erb__838452116229273932_69869657409700'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:17:15 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 54ms (Views: 39.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:17:46 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 53ms (Views: 38.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:19:33 -0300
+  
+SyntaxError (/home/mariano/hsh/app/helpers/admins_helper.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+      "https://secure.gravatar.com/avatar...
+       ^~~~~
+/home/mariano/hsh/app/helpers/admins_helper.rb:7: unknown regexp options - cr):
+  
+app/helpers/admins_helper.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/helpers/admins_helper.rb:7: unknown regexp options - cr
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/admins_controller.rb:1:in `<main>'
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:19:58 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 57ms (Views: 42.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:22:33 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 39ms (Views: 36.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:23:02 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 72ms (Views: 69.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-07 22:23:50 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:8
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 60ms (Views: 57.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/signup%7D" for 127.0.0.1 at 2018-11-07 22:42:48 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"signup}"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+Completed 404 Not Found in 6ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=signup}):
+  
+app/controllers/admins_controller.rb:9:in `show'
+Started GET "/admins/signup" for 127.0.0.1 at 2018-11-07 22:42:52 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=signup):
+  
+app/controllers/admins_controller.rb:9:in `show'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 22:43:48 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (39.6ms)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1..2)):
+     8: 
+     9:     <%= form_for(@admin) do |f| %>
+    10:       <%= f.label :codigo %>
+    11:       <%= f.text_field %>
+    12: 
+    13:       <%= f.submit "Crear un nuevo administrador", class:"btn btn-primary" %>
+    14: 
+  
+app/views/admins/new.html.erb:11:in `block in _app_views_admins_new_html_erb___3541965168690916977_69869600783600'
+app/views/admins/new.html.erb:9:in `_app_views_admins_new_html_erb___3541965168690916977_69869600783600'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 22:44:46 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Undefined mixin 'box_sizing'.):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' %>
+    10:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:     <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' %>
+  
+app/assets/stylesheets/custom.scss:9:in `box_sizing'
+app/assets/stylesheets/custom.scss:9
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__3318815743680888208_69869599642920'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 22:45:36 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 97ms (Views: 95.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 22:47:08 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 80ms (Views: 78.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 22:47:26 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 61ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:02:03 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 54ms (Views: 43.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:02:15 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vu5KW2tD9NcancofbjYlCrhS3k9K7TRI+jdkVs6Zc1mt7Fr/UPuVnvYeb8272HlPmVUUC+COT2mzp9b0HKWww==", "admin"=>{"codigo"=>"22323"}, "commit"=>"Crear un nuevo administrador"}
+Completed 500 Internal Server Error in 389ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `user_params' for #<AdminsController:0x00007f179819b548>):
+  
+app/controllers/admins_controller.rb:13:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:02:48 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vu5KW2tD9NcancofbjYlCrhS3k9K7TRI+jdkVs6Zc1mt7Fr/UPuVnvYeb8272HlPmVUUC+COT2mzp9b0HKWww==", "admin"=>{"codigo"=>"22323"}, "commit"=>"Crear un nuevo administrador"}
+Completed 500 Internal Server Error in 304ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `user_params' for #<AdminsController:0x0000556197510bf0>):
+  
+app/controllers/admins_controller.rb:13:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:03:08 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vu5KW2tD9NcancofbjYlCrhS3k9K7TRI+jdkVs6Zc1mt7Fr/UPuVnvYeb8272HlPmVUUC+COT2mzp9b0HKWww==", "admin"=>{"codigo"=>"22323"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 81ms (Views: 53.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:03:12 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ru3SpHW+c1xnsmyIob2vI4cEWpUDC9erxUcIuCcHgBLOodrm5VCS2UAAYh/q6hZSk4BFvBGiWkdAYUpyrE9zHA==", "admin"=>{"codigo"=>"22323"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 198ms (Views: 192.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:03:15 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"22323324324"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (2.8ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "22323324324"], ["created_at", "2018-11-08 02:03:15.384774"], ["updated_at", "2018-11-08 02:03:15.384774"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (111.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Redirected to http://localhost:3000/admins/5
+Completed 302 Found in 120ms (ActiveRecord: 113.9ms)
+
+
+Started GET "/admins/5" for 127.0.0.1 at 2018-11-07 23:03:15 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 59ms (Views: 55.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:05:44 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"22323324324"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (1.1ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "22323324324"], ["created_at", "2018-11-08 02:05:44.519217"], ["updated_at", "2018-11-08 02:05:44.519217"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.3ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: admins.codigo: INSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)):
+  
+app/controllers/admins_controller.rb:14:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:05:52 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"223"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered admins/new.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Missing partial shared/_error_messages with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     7:   <div class="col-md-6 ">
+     8: 
+     9:     <%= form_for(@admin) do |f| %>
+    10:       <%= render 'shared/error_messages' %>
+    11: 
+    12:       <%= f.label :codigo%>
+    13:       <%= f.text_field :codigo, class: 'form-control' %>
+  
+app/views/admins/new.html.erb:10:in `block in _app_views_admins_new_html_erb___3541965168690916977_69869596559100'
+app/views/admins/new.html.erb:9:in `_app_views_admins_new_html_erb___3541965168690916977_69869596559100'
+app/controllers/admins_controller.rb:17:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:11:08 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"223"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (15.1ms)
+  Rendered admins/new.html.erb within layouts/application (19.1ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `error' for #<Admin id: nil, codigo: "223", created_at: nil, updated_at: nil>
+Did you mean?  errors):
+    1: <% if @admin.error.any? %>
+    2: 
+    3:   <div id='error_explanation'>
+    4:     <div class= 'alert alert-danger'>
+  
+app/views/shared/_error_messages.html.erb:1:in `_app_views_shared__error_messages_html_erb___258667189492404204_69869761162680'
+app/views/admins/new.html.erb:10:in `block in _app_views_admins_new_html_erb___3541965168690916977_69869761791000'
+app/views/admins/new.html.erb:9:in `_app_views_admins_new_html_erb___3541965168690916977_69869761791000'
+app/controllers/admins_controller.rb:17:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:11:30 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"223"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (9.4ms)
+  Rendered admins/new.html.erb within layouts/application (11.4ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `error' for #<Admin id: nil, codigo: "223", created_at: nil, updated_at: nil>
+Did you mean?  errors):
+    2: 
+    3:   <div id='error_explanation'>
+    4:     <div class= 'alert alert-danger'>
+    5:       El formulario contiene <%= pluralize(@admin.error.count, 'errores') %>
+    6:     </div>
+    7: 
+    8:     <ul>
+  
+app/views/shared/_error_messages.html.erb:5:in `_app_views_shared__error_messages_html_erb___258667189492404204_69869601267540'
+app/views/admins/new.html.erb:10:in `block in _app_views_admins_new_html_erb___3541965168690916977_69869601274660'
+app/views/admins/new.html.erb:9:in `_app_views_admins_new_html_erb___3541965168690916977_69869601274660'
+app/controllers/admins_controller.rb:17:in `create'
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:11:57 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwQ5cu+xcvzjMcayTVHb4CqhJ8BS418mXJTeZpOSZR/XSDEwf1+TecSDyCUGBmKRPiU46UBK0srZspysGNqWEQ==", "admin"=>{"codigo"=>"223"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.1ms)
+  Rendered admins/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 53ms (Views: 50.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins" for 127.0.0.1 at 2018-11-07 23:13:08 -0300
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for AdminsController):
+  
+actionpack (5.2.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins" for 127.0.0.1 at 2018-11-07 23:13:19 -0300
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for AdminsController):
+  
+actionpack (5.2.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins(signup" for 127.0.0.1 at 2018-11-07 23:13:24 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admins(signup"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/admins/signup" for 127.0.0.1 at 2018-11-07 23:13:28 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=signup):
+  
+app/controllers/admins_controller.rb:9:in `show'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:13:35 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered admins/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:14:02 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.7ms)
+  Rendered admins/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 59ms (Views: 57.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:15:04 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 60ms (Views: 57.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:15:42 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 63ms (Views: 61.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:17:40 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 69ms (Views: 57.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:28:02 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HnmiC1cwBfwJm+c/olV1HsQglz9EoeZmcYxuqxMHB8OWNapJx97keS4p6ajpAsxv0KSIFlYIa4r0qixhmE/0zQ==", "admin"=>{"codigo"=>"1234"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.1ms)
+  Rendered admins/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 59ms (Views: 44.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:28:08 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c6m0swa4O2a0EikdYlanCbJps8VfVHsq0KTLPx9Gzx375bzxllba45OgJ4opAR54pu2s7E399sZVgon1lA48Ew==", "admin"=>{"codigo"=>"12344564334"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (1.7ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "12344564334"], ["created_at", "2018-11-08 02:28:08.247110"], ["updated_at", "2018-11-08 02:28:08.247110"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (190.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Redirected to http://localhost:3000/admins/6
+Completed 302 Found in 196ms (ActiveRecord: 191.8ms)
+
+
+Started GET "/admins/6" for 127.0.0.1 at 2018-11-07 23:28:08 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 64ms (Views: 61.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:43:34 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mariano/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (87.2ms)
+Completed 500 Internal Server Error in 146ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_47450649668880'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:44:39 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered admins/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial admins/_header, application/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958742691600'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:45:05 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.4ms)
+  Rendered admins/new.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header.html with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/header.html' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958816200240'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:45:15 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/header.html.erb' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958743148000'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:45:50 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered admins/new.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_47450649705660'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:46:10 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_47450665978740'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:47:06 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.9ms)
+  Rendered admins/new.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 3.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_47450666530000'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:47:35 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered admins/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (799.3ms)
+Completed 500 Internal Server Error in 807ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     9:     <% end %>
+    10:       <%= yield %>
+    11: 
+    12:    <%= render 'layouts/footer' %>
+    13: 
+    14: 
+    15:   </body>
+  
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___1160188139075267526_69958815071060'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:48:21 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial app/views/layouts/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'app/views/layouts/header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958829193300'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:48:38 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (51.1ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     9:     <% end %>
+    10:       <%= yield %>
+    11: 
+    12:    <%= render 'layouts/footer' %>
+    13: 
+    14: 
+    15:   </body>
+  
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___1160188139075267526_69958819504000'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:49:11 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_header.html.erb (32.5ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     9:     <% end %>
+    10:       <%= yield %>
+    11: 
+    12:    <%= render 'layouts/footer' %>
+    13: 
+    14: 
+    15:   </body>
+  
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___1160188139075267526_69958822609020'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:49:43 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_header.html.erb (34.7ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     9:     <% end %>
+    10:       <%= yield %>
+    11: 
+    12:    <%= render 'layouts/footer' %>
+    13: 
+    14: 
+    15:   </body>
+  
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___1160188139075267526_69958825765800'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:49:48 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_header.html.erb (40.4ms)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+     9:     <% end %>
+    10:       <%= yield %>
+    11: 
+    12:    <%= render 'layouts/footer' %>
+    13: 
+    14: 
+    15:   </body>
+  
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___1160188139075267526_69958826942020'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:49:57 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.1ms)
+  Rendered admins/new.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_header.html.erb (53.0ms)
+Completed 200 OK in 69ms (Views: 67.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:50:11 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered admins/new.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958822977700'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:50:54 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958827055840'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:50:56 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered admins/new.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <body>
+    4:    <%= render 'layouts/_header' %>
+    5: 
+    6:     <div class="container">
+    7:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___1160188139075267526_69958828872060'
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:51:25 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 59ms (Views: 49.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:52:30 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 48ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:53:31 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.9ms)
+  Rendered admins/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 124ms (Views: 120.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:53:33 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 59ms (Views: 57.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:54:07 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered admins/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 40ms (Views: 38.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:54:50 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered admins/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 52ms (Views: 50.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:56:00 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 48ms (Views: 46.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:57:22 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.9ms)
+  Rendered admins/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    48: 
+    49:    <body>
+    50:      
+    51:     <%= render 'layouts/header' %>
+    52: 
+    53:     <div class="container">
+    54:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:51:in `_app_views_layouts_application_html_erb___1160188139075267526_69958826435980'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (162.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (199.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateResidences (20181104204747)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "pais" varchar, "provincia" varchar, "partido" varchar, "ciudad" varchar, "direccion" varchar, "img_link" varchar, "desc" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181104204747_create_residences.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181104204747"]]
+  ↳ bin/rails:9
+  [1m[35m (156.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemovePaisFromResidence (20181106175125)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aresidences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "pais" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aresidences" ("id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","pais","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "residences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer NOT NULL PRIMARY KEY, "nombre" varchar DEFAULT NULL, "provincia" varchar DEFAULT NULL, "partido" varchar DEFAULT NULL, "ciudad" varchar DEFAULT NULL, "direccion" varchar DEFAULT NULL, "img_link" varchar DEFAULT NULL, "desc" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "residences" ("id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at")
+                     SELECT "id","nombre","provincia","partido","ciudad","direccion","img_link","desc","created_at","updated_at" FROM "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aresidences"[0m
+  ↳ db/migrate/20181106175125_remove_pais_from_residence.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181106175125"]]
+  ↳ bin/rails:9
+  [1m[35m (145.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateAdmins (20181107234425)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "codigo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181107234425_create_admins.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181107234425"]]
+  ↳ bin/rails:9
+  [1m[35m (151.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddIndexToAdminsCodigo (20181107235902)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_codigo" ON "admins" ("codigo")[0m
+  ↳ db/migrate/20181107235902_add_index_to_admins_codigo.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181107235902"]]
+  ↳ bin/rails:9
+  [1m[35m (129.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (8.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-08 02:58:21.278938"], ["updated_at", "2018-11-08 02:58:21.278938"]]
+  ↳ bin/rails:9
+  [1m[35m (149.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2018-11-07 23:58:46 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mariano/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#home as HTML
+  [1m[36mResidence Load (0.4ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" ORDER BY "residences"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/static_pages_controller.rb:4
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 427ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+    48: 
+    49:    <body>
+    50:      
+    51:     <%= render 'layouts/header' %>
+    52: 
+    53:     <div class="container">
+    54:       <% flash.each do |message_type, message|%>
+  
+app/views/layouts/application.html.erb:51:in `_app_views_layouts_application_html_erb___3856991362887134580_47187816343040'
+Started GET "/" for 127.0.0.1 at 2018-11-07 23:59:06 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mResidence Load (0.3ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" ORDER BY "residences"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/static_pages_controller.rb:4
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 74ms (Views: 70.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-07 23:59:17 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered admins/new.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 97ms (Views: 81.5ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:59:27 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w8vEFgMxkxBWYkZwlcFkqxEF2XeISAr99f34xI/yDldwXfoJBdFYoZG5hmXmF8PYu53SNByoLZReaSi+0dLebg==", "admin"=>{"codigo"=>"100"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "100"], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.1ms)
+  Rendered admins/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 58ms (Views: 51.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-07 23:59:53 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t3BgCO/32ALEImCGRGhZ/5Kr3NUMLm1IAOv9/rJi9z0E5l4X6RcTswP5oJM3vv6MODPXlpjOSiGrfy2E7EInBA==", "admin"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (0.5ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "Mariano Ominetti"], ["created_at", "2018-11-08 02:59:53.477402"], ["updated_at", "2018-11-08 02:59:53.477402"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (131.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Redirected to http://localhost:3000/admins/1
+Completed 302 Found in 139ms (ActiveRecord: 132.4ms)
+
+
+Started GET "/admins/1" for 127.0.0.1 at 2018-11-07 23:59:53 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 84ms (Views: 54.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/1" for 127.0.0.1 at 2018-11-08 00:00:46 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 44ms (Views: 40.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins/signup" for 127.0.0.1 at 2018-11-08 00:00:54 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=signup):
+  
+app/controllers/admins_controller.rb:9:in `show'
+Started GET "/signup" for 127.0.0.1 at 2018-11-08 00:01:01 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered admins/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 41ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-08 00:01:09 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ty2z1sZNWSEPfdHb1OMY0a54fBZjNp/reyDZm2ru/QH8u43JwK2SkMimEc6nNb+iBOB3VffWuILQtAnhNM4tOA==", "admin"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Tomas Lopez"], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (1.1ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "Tomas Lopez"], ["created_at", "2018-11-08 03:01:09.459341"], ["updated_at", "2018-11-08 03:01:09.459341"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (140.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Redirected to http://localhost:3000/admins/2
+Completed 302 Found in 150ms (ActiveRecord: 142.4ms)
+
+
+Started GET "/admins/2" for 127.0.0.1 at 2018-11-08 00:01:09 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-11-08 00:04:03 -0300
+Processing by AdminsController#new as HTML
+  Rendering admins/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered admins/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2018-11-08 00:04:10 -0300
+Processing by AdminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"f7GOLTag1hni6vwerHfTYbPA+NRgLxsHGsOkeMqknIDMJ7AyMEAdqCUxPAvfoXQSGVjzl/TPPG6xV3QClIRMuQ==", "admin"=>{"codigo"=>"Matias Pucciarelli"}, "commit"=>"Crear un nuevo administrador"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Matias Pucciarelli"], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[36mAdmin Create (0.4ms)[0m  [1m[32mINSERT INTO "admins" ("codigo", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["codigo", "Matias Pucciarelli"], ["created_at", "2018-11-08 03:04:10.925376"], ["updated_at", "2018-11-08 03:04:10.925376"]]
+  ↳ app/controllers/admins_controller.rb:14
+  [1m[35m (141.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins_controller.rb:14
+Redirected to http://localhost:3000/admins/3
+Completed 302 Found in 149ms (ActiveRecord: 142.5ms)
+
+
+Started GET "/admins/3" for 127.0.0.1 at 2018-11-08 00:04:11 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 45ms (Views: 42.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-11-08 00:37:41 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mariano/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `codigo' for nil:NilClass):
+    1: 
+    2: <% provide(:title , @admin.codigo) %>
+    3: 
+    4: 
+    5: <div class='row text-center'>
+  
+app/views/sessions/new.html.erb:2:in `_app_views_sessions_new_html_erb__1810107913291256781_47189318610880'
+Started GET "/login" for 127.0.0.1 at 2018-11-08 00:38:09 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (8.3ms)
+  Rendered sessions/new.html.erb within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    1: <% if @admin.errors.any? %>
+    2: 
+    3:   <div id='error_explanation'>
+    4:     <div class= 'alert alert-danger'>
+  
+app/views/shared/_error_messages.html.erb:1:in `_app_views_shared__error_messages_html_erb___2844605398488279607_70108798126040'
+app/views/sessions/new.html.erb:12:in `block in _app_views_sessions_new_html_erb__1810107913291256781_70108798106960'
+app/views/sessions/new.html.erb:11:in `_app_views_sessions_new_html_erb__1810107913291256781_70108798106960'
+Started GET "/login" for 127.0.0.1 at 2018-11-08 00:38:43 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 677ms (Views: 675.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:41:21 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...r = User.find_by(:codigo params[:session][:email])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...odigo params[:session][:email])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:43:20 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...r = User.find_by(:codigo params[:session][:email])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...odigo params[:session][:email])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:44:22 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...r = User.find_by(:codigo params[:session][:email])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...odigo params[:session][:email])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:45:01 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...r = User.find_by(:codigo params[:session][:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:46:39 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session][:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:46:55 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...= Admin.find_by( :codigo params[:session][:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:47:14 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session][:codigo]))
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo]))
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:49:39 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting ')'
+... user = Admin.find_by(:codigo 'Mariano Ominetti')
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+..._by(:codigo 'Mariano Ominetti')
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:50:53 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+       params[:session][:codigo])
+       ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:7: syntax error, unexpected ')', expecting keyword_end
+...     params[:session][:codigo])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:11: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:7: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:11: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:51:28 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+       param[:session_codigo])
+       ^~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:7: syntax error, unexpected ')', expecting keyword_end
+       param[:session_codigo])
+                             ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:11: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:7: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:11: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:52:10 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:52:37 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+...= Admin.find_by(:codigo session.codigo)
+...                        ^~~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...find_by(:codigo session.codigo)
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:53:20 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...nd_by(:codigo params[:session])
+...                              ^
+/home/mariano/hsh/app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:56:14 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...nd_by(:codigo params[:session])
+...                              ^):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+Started POST "/__web_console/repl_sessions/0fd129a6a0e4576c745fa6b51439c047/trace" for 127.0.0.1 at 2018-11-08 00:56:26 -0300
+Started POST "/login" for 127.0.0.1 at 2018-11-08 00:59:02 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session][:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo])
+...                              ^):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:00:37 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session][:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...digo params[:session][:codigo])
+...                              ^):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:08:20 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:session.codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...codigo params[:session.codigo])
+...                              ^):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:09:42 -0300
+  
+SyntaxError (/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = Admin.find_by(:codigo params[:codigo])
+...                         ^~~~~~
+/home/mariano/hsh/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+...ind_by(:codigo params[:codigo])
+...                              ^):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:10:54 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:11:27 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.8ms)
+
+
+  
+SyntaxError (/home/mariano/hsh/app/views/sessions/new.html.erb:11: syntax error, unexpected ')'
+...end=  form_for(:session, url: ) do |f| @output_buffer.safe_a...
+...                              ^
+/home/mariano/hsh/app/views/sessions/new.html.erb:26: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/sessions/new.html.erb:11: syntax error, unexpected ')'
+app/views/sessions/new.html.erb:26: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/controllers/sessions_controller.rb:11:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:12:40 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:13:24 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:13:50 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:14:26 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nV20WkMfsqWEvMWYsm5mXU4J3xhopH4411yTyzwMDGouy4pFRf95FENnBY3BuMEu5JHUW/xEWVF8yEOxYizcUw==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 67ms (Views: 60.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:14:48 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7GnxItIMheg7NBjK3wFa1QwjCLA8D4j4rJYCSMA73bBf/8891OxOWfzv2N+s1/2mprsD86jvr5EHAtIynhsNiQ==", "session"=>{"codigo"=>"Tomas Lopez"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 50ms (Views: 47.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:14:56 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BYWWG7lDBEb3FMEjnOnC8EXpDEweudfIGR/gy+fFPHy2E6gEv6PP9zDPATbvP2WD73EHD4pZ8KGyizCxueXsRQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 62ms (Views: 58.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-11-08 01:15:23 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 52ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:15:58 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nPVdnN7eKxhwxbct7S8rQ6aPiycT7mLQAftO5nDguZUvY2OD2D7gqbcedzie+YwwDBeAZIcORbmqb56cLsBprA==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 52ms (Views: 45.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:16:59 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0QXCmQ3jzl7XaPWMorGgJQB73gco7KQhadtzjqIVa2Vik/yGCwMF7xCzNZnRZwdWquPVRLwMg0jCT6P0/DW7XA==", "session"=>{"codigo"=>""}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 61ms (Views: 45.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:17:02 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VH0/XG+G9+h682LYQkSnYw6NYDyDLgRz8oOUYC7ENWDn6wFDaWY8Wb0oos0xkgAQpBVrfxfOIxpZF0QacOTlWQ==", "session"=>{"codigo"=>"123"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 118ms (Views: 113.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-11-08 01:17:20 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:17:22 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PB1alt2965UmqZ4HE7g6Wk52GStEpfTKpaU/MuFt2wOPi2SJ210gJOFyXhJgbp0p5O4SaNBF06MOMe9Iv00LOg==", "session"=>{"codigo"=>""}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 61ms (Views: 51.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:17:33 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XGUlX2z+QXdIcyuu5UhS0YrokJ//BIUACaG7PId7F2Xv8xtAah6Kxo+o67uWnvWiIHCb3GvkommiNWtG2VvHXA==", "session"=>{"codigo"=>"123"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 82ms (Views: 78.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:17:47 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mCAHXQRvTCKlAqw78OJkzBJDctYK/XKK6HI8t16rJoArtjlCAo+Hk2LZbC6DNMO/uNt5lZ4dVeND5uzNAIv2uQ==", "session"=>{"codigo"=>""}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 89ms (Views: 80.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:17:49 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gdoLezIz4vbhHjbhEX+l15+oA0yBrpLrvZ9tuMMAtfMyTDVkNNMpRybF9vRiqQKkNTAIDxVOtYIWC73CnSBlyg==", "session"=>{"codigo"=>"123"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.8ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 118ms (Views: 112.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:18:10 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1ao+pMSAQfJ3L7HvO8gU+rlRUeiO5MZViPuPwZmHMiZmPAC7wmCKQ7D0cfpIHrOJE8laqxoE4Twjb1+7x6fiHw==", "session"=>{"codigo"=>"asd"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "asd"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 49ms (Views: 44.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:18:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qes30zqF/y9NL0nTrwbfnjQjDLjh15YQtVMpZyPd75jyfQnMPGU0nor0icbc0HjtnrsH+3U3sXkex/kdff0/oQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template sessions/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+  
+app/controllers/sessions_controller.rb:8:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:18:51 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qes30zqF/y9NL0nTrwbfnjQjDLjh15YQtVMpZyPd75jyfQnMPGU0nor0icbc0HjtnrsH+3U3sXkex/kdff0/oQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::MissingTemplate (Missing partial admins/_admin with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:18:55 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qes30zqF/y9NL0nTrwbfnjQjDLjh15YQtVMpZyPd75jyfQnMPGU0nor0icbc0HjtnrsH+3U3sXkex/kdff0/oQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::MissingTemplate (Missing partial admins/_admin with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:19:48 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qes30zqF/y9NL0nTrwbfnjQjDLjh15YQtVMpZyPd75jyfQnMPGU0nor0icbc0HjtnrsH+3U3sXkex/kdff0/oQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+No template found for SessionsController#create, rendering head :no_content
+Completed 204 No Content in 42ms (ActiveRecord: 1.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:19:54 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qes30zqF/y9NL0nTrwbfnjQjDLjh15YQtVMpZyPd75jyfQnMPGU0nor0icbc0HjtnrsH+3U3sXkex/kdff0/oQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+No template found for SessionsController#create, rendering head :no_content
+Completed 204 No Content in 33ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-11-08 01:20:05 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 67ms (Views: 64.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:20:10 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B0PU3E0cKp2T8RKXAmZY3SicMB+TrJRgAzQLe2alOv+01erDS/zhLFQq0oJxsP+uggQ7XAdMswmooNsBOIXqxg==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+No template found for SessionsController#create, rendering head :no_content
+Completed 204 No Content in 35ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-11-08 01:20:30 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:20:32 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pvgGNcQqFuxI63D8X67GjnGnkq5IlKIsD/wso+yMZmwVbjgqwsrdXY8wsOkseGH92z+Z7dx0hUWkaPzZsqy2VQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::MissingTemplate (Missing template sessions/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariano/hsh/app/views"
+):
+  
+app/controllers/sessions_controller.rb:10:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:21:13 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pvgGNcQqFuxI63D8X67GjnGnkq5IlKIsD/wso+yMZmwVbjgqwsrdXY8wsOkseGH92z+Z7dx0hUWkaPzZsqy2VQ==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[36mCACHE Admin Load (0.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 65ms (Views: 50.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:24:46 -0300
+  
+ActionController::RoutingError (uninitialized constant ApplicationController::SessionHelper):
+  
+app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/sessions_controller.rb:1:in `<main>'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:26:12 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xI8cB29v0TG3h9wpzWkDunMDtkPFHKNWDV/FmdgqOVd3GSIYaY8agHBcHDy+v6TJ2Zu9AFH8hD+myxXjhgrpbg==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+Completed 500 Internal Server Error in 351ms (ActiveRecord: 1.1ms)
+
+
+  
+NameError (undefined local variable or method `user' for #<SessionsController:0x000055d63d886e68>):
+  
+app/helpers/sessions_helper.rb:4:in `log_in'
+app/controllers/sessions_controller.rb:8:in `create'
+Started POST "/login" for 127.0.0.1 at 2018-11-08 01:27:22 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xI8cB29v0TG3h9wpzWkDunMDtkPFHKNWDV/FmdgqOVd3GSIYaY8agHBcHDy+v6TJ2Zu9AFH8hD+myxXjhgrpbg==", "session"=>{"codigo"=>"Mariano Ominetti"}, "commit"=>"Ingresar"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."codigo" = ? LIMIT ?[0m  [["codigo", "Mariano Ominetti"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+Redirected to http://localhost:3000/admins/1
+Completed 302 Found in 15ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/admins/1" for 127.0.0.1 at 2018-11-08 01:27:22 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 59ms (Views: 55.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/1" for 127.0.0.1 at 2018-11-08 01:39:48 -0300
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admins_controller.rb:9
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 92ms (Views: 73.2ms | ActiveRecord: 1.5ms)
+
+
