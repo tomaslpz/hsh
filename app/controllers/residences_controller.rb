@@ -13,9 +13,9 @@ class ResidencesController < ApplicationController
   end
 
   # GET /residences/new
-  def new
-    @residence = Residence.new
-  end
+	def new
+		@residence = Residence.new
+	end
 
   # GET /residences/1/edit
   def edit
@@ -69,6 +69,6 @@ class ResidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def residence_params
-      params.require(:residence).permit(:nombre, :pais, :provincia, :partido, :ciudad, :direccion, :img_link, :desc)
+      params.require(:residence).permit(:nombre, :provincia, :partido, :ciudad, :direccion, :img_link, :desc)
     end
 end
