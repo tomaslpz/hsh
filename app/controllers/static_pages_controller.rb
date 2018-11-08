@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
 	def home
-		@r = Residence.last
+		@r = Residence.all.sample
+
 	end
 
 end
