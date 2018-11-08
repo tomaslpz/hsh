@@ -3,12 +3,13 @@
 <div class="row justify-content-md-center">
       <div class="col-md-6" >
         <div class="card mb-4 box-shadow">
-          <img class="card-img-top" src="https://previews.123rf.com/images/bialasiewicz/bialasiewicz1604/bialasiewicz160400648/55153721-imagen-de-la-hermosa-residencia-con-jard%C3%ADn-por-la-noche.jpg" alt="Card image cap">
+          <img class="card-img-top" src="<%=@r.img_link%>" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Texto de descripcion</p>
+            <p class="card-text"><strong><%=@r.nombre%></strong></p>
+            <p class="card-text"><%=@r.desc%></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                <a href= "/residences/<%=@r.id%> type="button" class="btn btn-sm btn-outline-secondary"">Ver</a>
               </div>
             </div>
           </div>
