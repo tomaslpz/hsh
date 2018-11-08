@@ -1,0 +1,23 @@
+
+<% provide(:title , 'Log in') %>
+
+
+<div class='row text-center'>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 card">
+    <h3>Log in</h3>
+
+    <%= form_for(:session, url: login_path ) do |f| %>
+
+      <%= f.label :codigo%>
+      <%= f.text_field :codigo, class: 'form-control' %>
+
+      <%= f.submit "Ingresar", class:"btn btn-primary" %>
+
+      <% end %>
+
+    <p> Usuario nuevo? <%= link_to "Registrate!", signup_path %>
+    </p>
+    </div>
+</div>
