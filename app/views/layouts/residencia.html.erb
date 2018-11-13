@@ -1,0 +1,31 @@
+<% if @residence != nil %>
+	<% @var = @residence %>
+<% else %>
+	<% @var = @block.residence %>
+<% end %>
+
+<div class="card rounded-0">
+	<div class="card-header d-flex flex-column flex-md-row align-items-center">
+		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
+			<%= @var.nombre %>
+		</h5>
+		<% if logged_in? %>
+			<%= link_to 'Modificar', edit_residence_path(@var), class: 'btn btn-warning mr-2 rounded-0' %>
+			<button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+		<% end %>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<img class="card-img-top col-6" src="<%= @var.img_link %>">
+			<ul class="list-group list-group-flush col-6">
+				<li class="list-group-item">
+					<p> <%= @var.desc %> </p>
+					<p class="font-weight-bold text-capitalize m-0">
+						<%= @var.direccion %><span class="text-muted">, <%= @var.ciudad %>, <%= @var.partido %>, <%= @var.provincia %></span>
+					</p>
+				</li>
+				<%= yield %>
+			</ul>
+		</div>
+	</div>
+</div>

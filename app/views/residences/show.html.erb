@@ -1,45 +1,27 @@
-<!--<p id="notice"><%= notice %></p>-->
+<li class="list-group-item">
+	<div id="dtp"></div>
+	<script type="text/javascript">
 
-<div class="card rounded-0">
-	<div class="card-header d-flex flex-column flex-md-row align-items-center">
-		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
-			<%= @residence.nombre %>
-		</h5>
-		<% if logged_in? %>
-			<%= link_to 'Modificar', edit_residence_path(@residence), class: 'btn btn-warning mr-2' %>
-			<button type="button" class="btn btn-danger">Eliminar</button>
-		<% end %>
-	</div>
-	<div class="card-body">
-		<div class="row">
-			<img class="card-img-top col-6" src="<%= @residence.img_link %>">
-			<ul class="list-group list-group-flush col-6">
-				<li class="list-group-item">
-					<p><%= @residence.desc %></p>
-					<p class="font-weight-bold text-capitalize m-0">
-						<%= @residence.direccion %><span class="text-muted">, <%= @residence.ciudad %>, <%= @residence.partido %>, <%= @residence.provincia %></span>
-					</p>
-				</li>
-				<li class="list-group-item">
-					<div id="datetimepicker12"></div>
-					<script type="text/javascript">
+		$(function () {
+			$('#dtp').datetimepicker({
+				inline: true,
+				sideBySide: true,
+				format: 'MM/dd/YYYY',
+				daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
+				minDate: new Date()
+			});
+		});
 
-						$(function () {
-							$('#datetimepicker12').datetimepicker({
-								inline: true,
-								sideBySide: true,
-								format: 'MM/dd/YYYY',
-								daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
-								minDate: new Date()
-							});
-						});
-					
-					</script>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
+		$("#dtp").on("dp.change", function(event) {
+			var fecha = event.date._d.toJSON().split('T')[0];
+			$("#bloque").attr("href", "/blocks/fecha/" + fecha + "/rid/" + "<%= @residence.id %>");
+			$("#bloque").html(fecha);
+		});
+	
+	</script>
+</li>
+<li class="list-group-item">
+	<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
+</li>
 
-<!-- |
-<%= link_to 'Back', residences_path %>-->
+<% parent_layout "residencia" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_235902) do
+ActiveRecord::Schema.define(version: 2018_11_13_205904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 2018_11_07_235902) do
     t.index ["codigo"], name: "index_admins_on_codigo", unique: true
   end
 
+  create_table "bids", force: :cascade do |t|
+    t.float "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "entry_id"
+    t.integer "block_id"
+    t.index ["block_id"], name: "index_bidblock_id"
+    t.index ["entry_id"], name: "index_entry_id"
+  end
+
+  create_table "blocks", force: :cascade do |t|
+    t.date "fecha"
+    t.string "adjudicado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "residence_id"
+    t.index ["residence_id"], name: "index_residence_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "block_id"
+    t.index ["block_id"], name: "index_block_id"
+  end
+
   create_table "residences", force: :cascade do |t|
     t.string "nombre"
     t.string "provincia"
@@ -30,6 +57,12 @@ ActiveRecord::Schema.define(version: 2018_11_07_235902) do
     t.string "direccion"
     t.string "img_link"
     t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

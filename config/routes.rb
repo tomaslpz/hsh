@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :blocks, :path => 'blocks'
+  get 'blocks(/fecha/:fecha)(/rid/:residence_id)', controller: 'blocks', action: 'show'
+
   get 'sessions/new'
 	root 'static_pages#home'
 
