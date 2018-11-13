@@ -8,7 +8,7 @@ module SessionsHelper
 
 
   def current_admin
-    if session[:user_id]
+    if session[:admin_id]
       @current_admin ||=
       Admin.find_by(id: session[:admin_id])
     end

@@ -5,8 +5,10 @@
 		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
 			<%= @residence.nombre %>
 		</h5>
-		<%= link_to 'Modificar', edit_residence_path(@residence), class: 'btn btn-warning mr-2' %>
-		<button type="button" class="btn btn-danger">Eliminar</button>
+		<% if logged_in? %>
+			<%= link_to 'Modificar', edit_residence_path(@residence), class: 'btn btn-warning mr-2' %>
+			<button type="button" class="btn btn-danger">Eliminar</button>
+		<% end %>
 	</div>
 	<div class="card-body">
 		<div class="row">
@@ -17,10 +19,6 @@
 					<p class="font-weight-bold text-capitalize m-0">
 						<%= @residence.direccion %><span class="text-muted">, <%= @residence.ciudad %>, <%= @residence.partido %>, <%= @residence.provincia %></span>
 					</p>
-				</li>
-				<li class="list-group-item text-capitalize">
-					<button type="button" class="btn btn-primary font-weight-bold">Participar de la subasta</button>
-					<button type="button" class="btn btn-success font-weight-bold">Adjudicarme esta residencia!</button>
 				</li>
 				<li class="list-group-item">
 					<div id="datetimepicker12"></div>

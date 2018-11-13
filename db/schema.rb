@@ -12,15 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2018_11_07_235902) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["codigo"], name: "index_admins_on_codigo", unique: true
   end
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   create_table "residences", force: :cascade do |t|
     t.string "nombre"
