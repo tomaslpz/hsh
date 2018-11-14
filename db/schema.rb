@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_11_13_231336) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
     t.datetime "created_at", null: false
@@ -59,12 +56,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_231336) do
     t.string "direccion"
     t.string "img_link"
     t.string "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

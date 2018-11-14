@@ -11,7 +11,8 @@
 		</h5>
 		<% if logged_in? %>
 			<%= link_to 'Modificar', edit_residence_path(@var), class: 'btn btn-warning mr-2 rounded-0' %>
-			<button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+			<%= link_to 'Eliminar', @var, method: :delete, class: 'btn btn-danger mr-2 rounded-0', data: { confirm: 'Estas seguro?' } %>
+			<div><%= notice %></div>
 		<% end %>
 	</div>
 	<div class="card-body">
