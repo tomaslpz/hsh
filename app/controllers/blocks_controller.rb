@@ -67,12 +67,12 @@ class BlocksController < ApplicationController
 		if (Residence.find_by_id(params[:residence_id]) != nil)
 			@block = Block.where(:fecha => params[:fecha], :residence_id => params[:residence_id]).first_or_create
 		else
-			@block = nil
+			@block = Block.find(params[:id])
 		end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:fecha, :adjudicado, :residence_id)
+      params.require(:block).permit(:fecha, :precio, :ensubasta, :adjudicado, :residence_id)
     end
 end

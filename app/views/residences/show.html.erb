@@ -1,25 +1,25 @@
-<li class="list-group-item">
-	<div id="dtp"></div>
-	<script type="text/javascript">
-		$(function () {
-			$('#dtp').datetimepicker({
-				inline: true,
-				sideBySide: true,
-				format: 'MM/dd/YYYY',
-				daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
-				minDate: new Date()
-			});
+<div id="dtpc">
+</div>
+<script type="text/javascript">
+
+	$(function () {
+
+		$('#dtpc').html('<div id="dtp"></div>');
+		$('#dtp').datetimepicker({
+			inline: true,
+			sideBySide: true,
+			format: 'MM/dd/YYYY',
+			daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
+			minDate: new Date()
 		});
 		$("#dtp").on("dp.change", function(event) {
 			var fecha = event.date._d.toJSON().split('T')[0];
 			$("#bloque").attr("href", "/blocks/fecha/" + fecha + "/rid/" + "<%= @residence.id %>");
 			$("#bloque").html(fecha);
 		});
-	</script>
-</li>
+	});
+</script>
 
-<li class="list-group-item">
-	<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
-</li>
+<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
 
 <% parent_layout "residencia" %>

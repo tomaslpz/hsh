@@ -3,7 +3,7 @@
   <div class="input-group">
   <input class="form-control" placeholder="Monto minimo" required="required" type="text"/>
   <div class="input-group-append">
-    <button type="submit" class="btn btn-primary">Crear Subasta</button>
+	<%= link_to "Crear Subasta", block_path(@block, block:{:ensubasta => true}), method: :put, class: 'btn btn-primary' %>
   </div>
   </div>
 <%else%>
