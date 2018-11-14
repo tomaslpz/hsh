@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_205904) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2018_11_13_231336) do
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -38,6 +35,8 @@ ActiveRecord::Schema.define(version: 2018_11_13_205904) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "residence_id"
+    t.float "precio"
+    t.boolean "ensubasta"
     t.index ["residence_id"], name: "index_residence_id"
   end
 
@@ -57,12 +56,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_205904) do
     t.string "direccion"
     t.string "img_link"
     t.string "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,1 +1,22 @@
+<% if logged_in? %>
+  <% if((@block.fecha << 6) <=> Date.today) <= 0 %>
+  <div class="input-group">
+  <input class="form-control" placeholder="Monto minimo" required="required" type="text"/>
+  <div class="input-group-append">
+    <button type="submit" class="btn btn-primary">Crear Subasta</button>
+  </div>
+  </div>
+<%else%>
+<div class="alert alert-warning" role="alert">
+  La subasta estara disponible a partir del dia <%=@block.fecha%>
+</div>
+<%end%>
+  <div class="listaDeUsuarios">
+  <% @block.entries.each do |user|%>
+  <div class="list-group list-group-item list-group-item-action flex-column align-items-start">
+    <small>user.email</small>
+  </div>
+  <%end%>
+  </div>
+<%end%>
 <% parent_layout "residencia" %>
