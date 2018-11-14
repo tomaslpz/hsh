@@ -1,7 +1,6 @@
 <li class="list-group-item">
 	<div id="dtp"></div>
 	<script type="text/javascript">
-
 		$(function () {
 			$('#dtp').datetimepicker({
 				inline: true,
@@ -11,15 +10,14 @@
 				minDate: new Date()
 			});
 		});
-
 		$("#dtp").on("dp.change", function(event) {
 			var fecha = event.date._d.toJSON().split('T')[0];
 			$("#bloque").attr("href", "/blocks/fecha/" + fecha + "/rid/" + "<%= @residence.id %>");
 			$("#bloque").html(fecha);
 		});
-	
 	</script>
 </li>
+
 <li class="list-group-item">
 	<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
 </li>
