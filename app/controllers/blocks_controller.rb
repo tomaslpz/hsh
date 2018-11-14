@@ -66,6 +66,8 @@ class BlocksController < ApplicationController
 	def set_block
 		if (Residence.find_by_id(params[:residence_id]) != nil)
 			@block = Block.where(:fecha => params[:fecha], :residence_id => params[:residence_id]).first_or_create
+      @block.precio = 0
+      @block.save
 		else
 			@block = Block.find(params[:id])
 		end
