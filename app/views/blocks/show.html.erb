@@ -1,32 +1,58 @@
 <% if logged_in? %>
-  <%if  @block.ensubasta %>
-      <!--Cerrar subasta -->
-  <%else%>
-    <% if((@block.fecha << 6) <=> Date.today) <= 0 %>
-    <div class="input-group">
 
-      <%= form_for(@block) do |b| %>
+	<% case @block.estado %>
+	<% when 0 #bloque normal %>
+	
+		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
 
-        <%= b.text_field :precio, class: 'form-control' %>
-        <%= b.hidden_field :ensubasta, :value => true %>
-        <%= b.submit "Crear subasta", class:"btn btn-primary" %>
+			<%= form_for(@block) do |b| %>
+				<div class="input-group">
+					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+					<%= b.hidden_field :ensubasta, :value => true %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
 
-        <% end %>
-    <div class="input-group-append">
-    </div>
-    </div>
-    <%else%>
-    <div class="alert alert-warning" role="alert">
-      La subasta estara disponible a partir del dia <%=@block.fecha%>
-    </div>
-    <%end%>
-    <div class="listaDeUsuarios">
-      <% @block.entries.each do |user|%>
-      <div class="list-group list-group-item list-group-item-action flex-column align-items-start">
-        <small>user.email</small>
-      </div>
-      <%end%>
-    </div>
-  <%end%>  
+			<br/>
+
+			<%= form_for(@block) do |b| %>
+				<div class="input-group">
+					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+					<%= b.hidden_field :ensubasta, :value => true %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
+
+    	<%else%>
+
+			<div class="alert alert-warning" role="alert">
+			La subasta estara disponible a partir del dia <%=@block.fecha%>
+			</div>
+
+    	<%end%>
+
+	<% when 1 #bloque en subasta %>
+
+		<!-- Cerrar subasta -->
+
+	<% when 2 #bloque en hotsale %>
+
+		<!-- Hotsale -->
+		
+	<% end %>
+
+	<div class="listaDeUsuarios">
+		<% @block.entries.each do |entry|%>
+			<div class="list-group list-group-item list-group-item-action flex-column align-items-start">
+				<small>entry.email</small>
+			</div>
+   		<%end%>
+	</div>
+
 <%end%>
+
 <% parent_layout "residencia" %>

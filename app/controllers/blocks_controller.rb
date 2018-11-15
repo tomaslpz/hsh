@@ -75,6 +75,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:fecha, :precio, :ensubasta, :adjudicado, :residence_id)
+      params.require(:block).permit(:fecha, :precio, :estado, :adjudicado, :residence_id)
     end
 end
