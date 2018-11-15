@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get '/signup', to:
   'admins#new'
 
+
+  delete '/logout',  to:
+  'sessions#destroy'
+
+
   post '/signup', to:
   'admins#create'
 

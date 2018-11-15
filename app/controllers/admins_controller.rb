@@ -19,6 +19,8 @@ class AdminsController < ApplicationController
       end
   end
 
+def destroy
+end
     private
 
     def admin_params
