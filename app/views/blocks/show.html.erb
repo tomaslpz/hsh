@@ -24,15 +24,25 @@
   					<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
   				</div>
   			</div>
-  		<% end %>
+  		    <% end %>
+      <% end %>
 
-    	<%else%>
+	    <%else%>
 
   		<div class="alert alert-warning" role="alert">
   		La subasta estara disponible a partir del dia <%=@block.fecha%>
   		</div>
+      <%= form_for(:entry) do |e| %>
+  			<div class="input-group">
+  				<%= e.text_field :email, class: 'form-input rounded-0 col-6' %>
+  				<%= e.hidden_field :block_id, :value => @block.id %>
+  				<div class="input-group-append p-0 m-0 col-6">
+  					<%= e.submit "Participa", class: 'btn btn-secondary rounded-0' %>
+  				</div>
+  			</div>
+  		    <% end %>
 
-    	<%end%>
+
     <%end%>
 
 <% when 1 #bloque en subasta %>
@@ -41,7 +51,7 @@
     <%= form_for(@block) do |b| %>
     <div class="input-group">
       <%= b.hidden_field :estado, :value => 0 %>
-
+      <%= b.hidden_field :adjudicado, :value => @block.bids.order(valor: :desc).first %>
       <div class="input-group-append p-0 m-0 col-6">
         <%= b.submit "Cerrar Subasta", class: 'btn btn-primary rounded-0' %>
       </div>
@@ -49,7 +59,6 @@
 
     <% end %>
   <%end %>
-
 
 <% when 2 #bloque en hotsale %>
 
