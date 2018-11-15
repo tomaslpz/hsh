@@ -31,4 +31,4 @@
 /config/master.key
 
 #para que no sincronice
-/config/database.yml
+#/config/database.yml
