@@ -2,6 +2,7 @@
 <% when 0 #bloque normal %>
 
 	<% if logged_in? %>
+		
 		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
 
 			<!-- Boton crear subasta -->
@@ -36,7 +37,19 @@
 
 		<%end%>
 
-    <%end%>
+    <% else %>
+
+		<%= form_for(Entry.new) do |e| %>
+  			<div class="input-group">
+  				<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
+  				<%= e.hidden_field :block_id, :value => @block.id %>
+  				<div class="input-group-append p-0 m-0 col-6">
+  					<%= e.submit "Participa", class: 'btn btn-secondary rounded-0' %>
+  				</div>
+  			</div>
+  		<% end %>
+
+	<% end %>
 
 <% when 1 #bloque en subasta %>
 
@@ -52,7 +65,20 @@
 				</div>
 			</div>
 		<% end %>
-	<%end %>
+
+	<% else %>
+
+		<%= form_for(Entry.new) do |e| %>
+  			<div class="input-group">
+  				<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
+  				<%= e.hidden_field :block_id, :value => @block.id %>
+  				<div class="input-group-append p-0 m-0 col-6">
+  					<%= e.submit "Participa", class: 'btn btn-secondary rounded-0' %>
+  				</div>
+  			</div>
+  		<% end %>
+
+	<% end %>
 
 <% when 2 #bloque en hotsale %>
 

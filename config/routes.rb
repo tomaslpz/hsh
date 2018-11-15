@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :entries
+
   resources :blocks, :path => 'blocks'
   get 'blocks(/fecha/:fecha)(/rid/:residence_id)', controller: 'blocks', action: 'show'
 
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
 
   post '/signup', to:
   'admins#create'
+
+  post 'entries/new', to:
+  'entries#new'
 
 
 	  get '/login', to:
