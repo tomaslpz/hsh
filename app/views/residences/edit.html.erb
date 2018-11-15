@@ -1,10 +1,7 @@
-<h1>Editing Residence</h1>
+<h1>Editar Residencia</h1>
 
 <% if logged_in? %>
 	<%= render 'form', residence: @residence %>
 <% else %>
 	<p>Acceso denegado</p>
 <% end %>
-
-<%= link_to 'Show', @residence %> |
-<%= link_to 'Back', residences_path %>
