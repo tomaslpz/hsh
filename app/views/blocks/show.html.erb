@@ -41,7 +41,7 @@
     <%= form_for(@block) do |b| %>
     <div class="input-group">
       <%= b.hidden_field :estado, :value => 0 %>
-
+      <%= b.hidden_field :adjudicado, :value => @block.bids.order(valor: :desc).first %>
       <div class="input-group-append p-0 m-0 col-6">
         <%= b.submit "Cerrar Subasta", class: 'btn btn-primary rounded-0' %>
       </div>
@@ -49,7 +49,6 @@
 
     <% end %>
   <%end %>
-
 
 <% when 2 #bloque en hotsale %>
 
