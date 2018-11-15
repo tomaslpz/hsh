@@ -1,58 +1,68 @@
-<% if logged_in? %>
+<% case @block.estado %>
+<% when 0 #bloque normal %>
 
-	<% case @block.estado %>
-	<% when 0 #bloque normal %>
-	
-		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
+  <% if logged_in? %>
+  	<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
 
-			<%= form_for(@block) do |b| %>
-				<div class="input-group">
-					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-					<%= b.hidden_field :estado, :value => 1 %>
-					<div class="input-group-append p-0 m-0 col-6">
-						<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
-					</div>
-				</div>
-			<% end %>
+  		<%= form_for(@block) do |b| %>
+  			<div class="input-group">
+  				<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+  				<%= b.hidden_field :estado, :value => 1 %>
+  				<div class="input-group-append p-0 m-0 col-6">
+  					<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
+  				</div>
+  			</div>
+  		<% end %>
 
-			<br/>
+  		<br/>
 
-			<%= form_for(@block) do |b| %>
-				<div class="input-group">
-					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-					<%= b.hidden_field :estado, :value => 2 %>
-					<div class="input-group-append p-0 m-0 col-6">
-						<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
-					</div>
-				</div>
-			<% end %>
+  		<%= form_for(@block) do |b| %>
+  			<div class="input-group">
+  				<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+  				<%= b.hidden_field :estado, :value => 2 %>
+  				<div class="input-group-append p-0 m-0 col-6">
+  					<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
+  				</div>
+  			</div>
+  		<% end %>
 
     	<%else%>
 
-			<div class="alert alert-warning" role="alert">
-			La subasta estara disponible a partir del dia <%=@block.fecha%>
-			</div>
+  		<div class="alert alert-warning" role="alert">
+  		La subasta estara disponible a partir del dia <%=@block.fecha%>
+  		</div>
 
     	<%end%>
+    <%end%>
 
-	<% when 1 #bloque en subasta %>
+<% when 1 #bloque en subasta %>
 
-		<!-- Cerrar subasta -->
+  <% if logged_in? %>
+    <%= form_for(@block) do |b| %>
+    <div class="input-group">
+      <%= b.hidden_field :estado, :value => 0 %>
 
-	<% when 2 #bloque en hotsale %>
+      <div class="input-group-append p-0 m-0 col-6">
+        <%= b.submit "Cerrar Subasta", class: 'btn btn-primary rounded-0' %>
+      </div>
+    </div>
 
-		<!-- Hotsale -->
+    <% end %>
+  <%end %>
 
-	<% end %>
 
-	<div class="listaDeUsuarios">
-		<% @block.entries.each do |entry|%>
-			<div class="list-group list-group-item list-group-item-action flex-column align-items-start">
-				<small>entry.email</small>
-			</div>
-   		<%end%>
-	</div>
+<% when 2 #bloque en hotsale %>
 
-<%end%>
+	<!-- Hotsale -->
+
+<% end %>
+
+<div class="listaDeUsuarios">
+	<% @block.entries.each do |entry|%>
+		<div class="list-group list-group-item list-group-item-action flex-column align-items-start">
+			<small>entry.email</small>
+		</div>
+ 		<%end%>
+</div>
 
 <% parent_layout "residencia" %>
