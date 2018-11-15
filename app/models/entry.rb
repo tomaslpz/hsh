@@ -6,7 +6,7 @@ class Entry < ApplicationRecord
 	
 	validates :email, presence: true, length: { maximum: 255 },
 				format: { with: VALID_EMAIL_REGEX },
-				uniqueness: { case_sensitive: false }
+				uniqueness: { scope: [:block_id], case_sensitive: false }
 
 	belongs_to :block
 	has_many :bids
