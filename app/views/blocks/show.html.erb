@@ -8,7 +8,7 @@
 			<%= form_for(@block) do |b| %>
 				<div class="input-group">
 					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-					<%= b.hidden_field :ensubasta, :value => true %>
+					<%= b.hidden_field :estado, :value => 1 %>
 					<div class="input-group-append p-0 m-0 col-6">
 						<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
 					</div>
@@ -20,7 +20,7 @@
 			<%= form_for(@block) do |b| %>
 				<div class="input-group">
 					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-					<%= b.hidden_field :ensubasta, :value => true %>
+					<%= b.hidden_field :estado, :value => 2 %>
 					<div class="input-group-append p-0 m-0 col-6">
 						<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
 					</div>
@@ -42,7 +42,7 @@
 	<% when 2 #bloque en hotsale %>
 
 		<!-- Hotsale -->
-		
+
 	<% end %>
 
 	<div class="listaDeUsuarios">
