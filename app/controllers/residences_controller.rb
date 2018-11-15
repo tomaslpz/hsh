@@ -29,7 +29,7 @@ class ResidencesController < ApplicationController
 
     respond_to do |format|
       if @residence.save
-        format.html { redirect_to @residence, notice: 'Residence was successfully created.' }
+        format.html { redirect_to @residence, notice: 'La residencia se creo correctamente.' }
         format.json { render :show, status: :created, location: @residence }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ResidencesController < ApplicationController
   def update
     respond_to do |format|
       if @residence.update(residence_params)
-        format.html { redirect_to @residence, notice: 'Residence was successfully updated.' }
+        format.html { redirect_to @residence, notice: 'La residencia se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @residence }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ResidencesController < ApplicationController
   # DELETE /residences/1.json
   def destroy
     @residence.blocks.each do |bloque|
-        if bloque.ensubasta
+        if bloque.estado != 0
           respond_to do |format|
             format.html { redirect_to @residence, notice: 'Existen subastas activas.' }
           end

@@ -28,7 +28,7 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       if @block.save
-        format.html { redirect_to @block, notice: 'Block was successfully created.' }
+        format.html { redirect_to @block, notice: 'El bloque fue creado correctamente.' }
         format.json { render :show, status: :created, location: @block }
       else
         format.html { render :new }
@@ -42,10 +42,10 @@ class BlocksController < ApplicationController
   def update
     respond_to do |format|
       if @block.update(block_params)
-        format.html { redirect_to @block, notice: 'Block was successfully updated.' }
+        format.html { redirect_to @block, notice: 'El bloque fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @block }
       else
-        format.html { render :edit }
+        format.html { redirect_to @block, notice: @block.errors.full_messages.first}
         format.json { render json: @block.errors, status: :unprocessable_entity }
       end
     end
@@ -65,9 +65,11 @@ class BlocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 	def set_block
 		if (Residence.find_by_id(params[:residence_id]) != nil)
-			@block = Block.where(:fecha => params[:fecha], :residence_id => params[:residence_id]).first_or_create
-      @block.precio = 0
-      @block.save
+			@block = Block.where(:fecha => params[:fecha],
+			:residence_id => params[:residence_id]).first_or_create do |bloque|
+				bloque.precio = 0
+				bloque.estado = 0
+			end
 		else
 			@block = Block.find(params[:id])
 		end

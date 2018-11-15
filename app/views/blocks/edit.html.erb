@@ -1,6 +1,4 @@
-<h1>Editing Block</h1>
-
-<%= render 'form', block: @block %>
-
-<%= link_to 'Show', @block %> |
-<%= link_to 'Back', blocks_path %>
+<% if logged_in? %>
+	<h1>Editar bloque</h1>
+	<%= render 'form', block: @block %>
+<% end %>

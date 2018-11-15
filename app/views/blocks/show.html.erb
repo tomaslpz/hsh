@@ -1,67 +1,110 @@
 <% case @block.estado %>
 <% when 0 #bloque normal %>
 
-  <% if logged_in? %>
-  	<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
+	<% if logged_in? %>
+		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
 
-  		<%= form_for(@block) do |b| %>
-  			<div class="input-group">
-  				<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-  				<%= b.hidden_field :estado, :value => 1 %>
-  				<div class="input-group-append p-0 m-0 col-6">
-  					<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
-  				</div>
-  			</div>
-  		<% end %>
+			<!-- Boton crear subasta -->
 
-  		<br/>
+			<%= form_for(@block) do |b| %>
+				<div class="input-group">
+					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+					<%= b.hidden_field :estado, :value => 1 %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= b.submit "Crear subasta", class: 'btn btn-primary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
 
-  		<%= form_for(@block) do |b| %>
-  			<div class="input-group">
-  				<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
-  				<%= b.hidden_field :estado, :value => 2 %>
-  				<div class="input-group-append p-0 m-0 col-6">
-  					<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
-  				</div>
-  			</div>
-  		<% end %>
+			<!-- Boton crear hotsale -->
 
-    	<%else%>
+			<%= form_for(@block) do |b| %>
+				<div class="input-group">
+					<%= b.text_field :precio, class: 'form-control rounded-0 col-6' %>
+					<%= b.hidden_field :estado, :value => 2 %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= b.submit "Crear hotsale", class: 'btn btn-secondary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
 
-  		<div class="alert alert-warning" role="alert">
-  		La subasta estara disponible a partir del dia <%=@block.fecha%>
-  		</div>
+		<%else%>
 
-    	<%end%>
+			<div class="alert alert-warning" role="alert">
+				La subasta estara disponible a partir del dia <%= @block.fecha << 6 %>
+			</div>
+
+		<%end%>
+
     <%end%>
 
 <% when 1 #bloque en subasta %>
 
-  <% if logged_in? %>
-    <%= form_for(@block) do |b| %>
-    <div class="input-group">
-      <%= b.hidden_field :estado, :value => 0 %>
-      <%= b.hidden_field :adjudicado, :value => @block.bids.order(valor: :desc).first %>
-      <div class="input-group-append p-0 m-0 col-6">
-        <%= b.submit "Cerrar Subasta", class: 'btn btn-primary rounded-0' %>
-      </div>
-    </div>
+	<!-- Subasta -->
 
-    <% end %>
-  <%end %>
+	<% if logged_in? %>
+		<%= form_for(@block) do |b| %>
+			<div class="input-group">
+				<%= b.hidden_field :estado, :value => 0 %>
+				<%= b.hidden_field :adjudicado, :value => @block.bids.order(valor: :desc).first %>
+				<div class="input-group-append p-0 m-0 col-6">
+					<%= b.submit "Cerrar Subasta", class: 'btn btn-primary rounded-0' %>
+				</div>
+			</div>
+		<% end %>
+	<%end %>
 
 <% when 2 #bloque en hotsale %>
 
 	<!-- Hotsale -->
 
+	<% if @block.adjudicado == '' %>
+
+		<h5>Precio del bloque <span class="badge badge-success"><%= @block.precio %></span></h5>
+
+		<% if logged_in? %>
+
+			<%= form_for(@block) do |b| %>
+				<div class="input-group">
+					<%= b.hidden_field :estado, :value => 0 %>
+					<div class="input-group-append p-0 m-0 col-12">
+						<%= b.submit "Cerrar Hotsale", class: 'btn btn-primary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
+
+		<% else %>
+
+			<%= form_for(@block) do |formulario| %>
+				<div class="input-group">
+					<%= formulario.text_field :adjudicado, class: 'form-control rounded-0 col-6' %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= formulario.submit "Adjudicarme este bloque!", class: 'btn btn-primary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
+
+		<% end %>
+	
+	<% else %>
+
+		<% if logged_in? %>
+			<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
+		<% else %>
+			<h5>Bloque adjudicado!</h5>
+		<% end %>
+
+	<% end %>
+
 <% end %>
 
-<div class="listaDeUsuarios">
+<h5 class="mt-3">Participantes</h3>
+<div class="list-group" style="height:200px; overflow-y:scroll;">
 	<% @block.entries.each do |entry|%>
-		<div class="list-group list-group-item list-group-item-action flex-column align-items-start">
-			<small>entry.email</small>
+		<div class="list-group-item">
+			<small><%= entry.email %></small>
 		</div>
- 		<%end%>
+ 	<%end%>
 </div>
 
 <% parent_layout "residencia" %>

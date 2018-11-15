@@ -4,5 +4,5 @@ class Block < ApplicationRecord
 	has_many :entries
 	has_many :bids
 
-	validates :precio, numericality: { greater_than_or_equal_to: 0 }
+	validates :precio, numericality: { greater_than_or_equal_to: 0, message: ' debe ser mayor o igual a cero.' }
 end
