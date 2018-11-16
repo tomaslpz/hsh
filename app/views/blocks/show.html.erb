@@ -29,7 +29,7 @@
 				</div>
 			<% end %>
 
-		<%else%>
+		<% else %>
 
 			<div class="alert alert-warning" role="alert">
 				La subasta estara disponible a partir del dia <%= @block.fecha << 6 %>
@@ -48,15 +48,19 @@
 
     <% else %>
 
-		<%= form_for(Entry.new) do |e| %>
-  			<div class="input-group">
-  				<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
-  				<%= e.hidden_field :block_id, :value => @block.id %>
-  				<div class="input-group-append p-0 m-0 col-6">
-  					<%= e.submit "Participa", class: 'btn btn-secondary rounded-0' %>
-  				</div>
-  			</div>
-  		<% end %>
+		<% if (@block.adjudicado == '' || @block.adjudicado == nil) %>
+
+			<%= form_for(Entry.new) do |e| %>
+				<div class="input-group">
+					<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
+					<%= e.hidden_field :block_id, :value => @block.id %>
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= e.submit "Participar", class: 'btn btn-secondary rounded-0' %>
+					</div>
+				</div>
+			<% end %>
+
+		<% end %>
 
 	<% end %>
 
