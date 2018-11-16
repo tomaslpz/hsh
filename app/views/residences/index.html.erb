@@ -1,4 +1,7 @@
-<div class="row justify-content-md-center mb-3">
-	<a href="/residences/new" class="btn btn-primary col-md-6 rounded-0">Nueva Residencia</a>
-</div>
+<% if logged_in? %>
+	<div class="row justify-content-md-center mb-3">
+		<a href="/residences/new" class="btn btn-primary col-md-6 rounded-0">Nueva Residencia</a>
+	</div>
+<% end %>
+
 <%= render 'listaResidencia', residencias: @residences %>

@@ -2,6 +2,7 @@
 
 <div id="dtpc">
 </div>
+
 <script type="text/javascript">
 
 	$(function () {
@@ -16,9 +17,16 @@
 		});
 		$("#dtp").on("dp.change", function(event) {
 			var fecha = event.date._d.toJSON().split('T')[0];
+			var fechaLocal = moment(event.date._d.toUTCString()).format("DD-MM-YYYY");
 			$("#bloque").attr("href", "/blocks/fecha/" + fecha + "/rid/" + "<%= @residence.id %>");
-			$("#bloque").html(fecha);
+			$("#bloque").html(fechaLocal);
 		});
+
+		e = jQuery.Event("dp.change")
+		e.date = $("#dtp").data("DateTimePicker").date();
+		e.oldDate = $("#dtp").data("DateTimePicker").date();
+		
+		$('#dtp').trigger(e);
 	});
 </script>
 

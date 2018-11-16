@@ -60,10 +60,12 @@
 
 	<% end %>
 
-	<% if logged_in? %>
-		<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
-	<% else %>
-		<h5>Bloque adjudicado!</h5>
+	<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
+		<% if logged_in? %>
+			<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
+		<% else %>
+			<h5>Bloque adjudicado!</h5>
+		<% end %>
 	<% end %>
 
 <% when 1 #bloque en subasta %>
@@ -165,10 +167,12 @@
 	
 	<% else %>
 
-		<% if logged_in? %>
-			<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
-		<% else %>
-			<h5>Bloque adjudicado!</h5>
+		<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
+			<% if logged_in? %>
+				<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
+			<% else %>
+				<h5>Bloque adjudicado!</h5>
+			<% end %>
 		<% end %>
 
 	<% end %>
