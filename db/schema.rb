@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_022006) do
+ActiveRecord::Schema.define(version: 2018_11_17_194937) do
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -61,9 +61,14 @@ ActiveRecord::Schema.define(version: 2018_11_15_022006) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.integer "codTarjeta"
+    t.integer "numTarjeta"
+    t.string "name"
+    t.string "email"
+    t.date "birth_date"
   end
 
 end
