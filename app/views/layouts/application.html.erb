@@ -23,7 +23,7 @@
 			<nav class="my-2 my-md-0 mr-md-3">
 				<% if logged_in_admin? %>
 					<%= link_to "Log out", logout_path, method: :delete, class:'btn btn-outline-primary rounded-0' %>
-					<a class="btn btn-outline-primary rounded-0 ml-2" href="/signup">Nuevo administrador</a>
+					<%= link_to "Nuevo administrador", new_admin_path, method: :get, class:'btn btn-outline-primary rounded-0' %>
 				<% else %>
 							<% if logged_in_user? %>
 								<%= link_to "Log out", logout_path, method: :delete, class:'btn btn-outline-primary rounded-0' %>
