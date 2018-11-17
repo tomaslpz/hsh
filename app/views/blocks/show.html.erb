@@ -1,8 +1,8 @@
 <% case @block.estado %>
 <% when 0 #bloque normal %>
 
-	<% if logged_in? %>
-		
+	<% if logged_in_admin? %>
+
 		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
 
 			<!-- Boton crear subasta -->
@@ -168,7 +168,7 @@
 			<% end %>
 
 		<% end %>
-	
+
 	<% else %>
 
 		<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>

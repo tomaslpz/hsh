@@ -1,7 +1,7 @@
 <div class="container">
 <h1>Nueva residencia</h1>
 
-<% if logged_in? %>
+<% if logged_in_admin? %>
 	<%= render 'form', residence: @residence %>
 <% else %>
 	<%= render html:'Acceso denegado' %>
