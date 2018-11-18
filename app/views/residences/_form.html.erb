@@ -20,41 +20,41 @@
 
 		<div class="form-group">
 	    	<%= form.label :nombre %>
-	    	<%= form.text_field :nombre, class: 'form-control', placeholder: 'Las rosas', required:true %>
+	    	<%= form.text_field :nombre, class: 'form-control', placeholder: 'Nombre de la residencia: Las Rosas', required:true %>
 		</div>
 
 		<div class="form-group form-row">
 
 			<div class="col">
 	    		<%= form.label :provincia %>
-	    		<%= form.text_field :provincia, class: 'form-control', placeholder: 'Buenos Aires', required:true %>
+	    		<%= form.text_field :provincia, class: 'form-control', placeholder: 'Provincia de la residencia: Buenos Aires', required:true %>
 			</div>
 
 			<div class="col">
 	    		<%= form.label :partido %>
-	    		<%= form.text_field :partido, class: 'form-control', placeholder: 'Tandil', required:true %>
+	    		<%= form.text_field :partido, class: 'form-control', placeholder: 'Partido de la residencia: Tandil', required:true %>
 			</div>
 
 			<div class="col">
 				<%= form.label 'Localidad' %>
-				<%= form.text_field :ciudad, class: 'form-control', placeholder: 'Gardey', required:true %>
+				<%= form.text_field :ciudad, class: 'form-control', placeholder: 'Localidad de la residencia: Gardney', required:true %>
 			</div>
 
 			<div class="col">
 		      <%= form.label 'Direccion' %>
-		      <%= form.text_field :direccion, class: 'form-control', placeholder: 'Calle 1 n°111', required:true %>
+		      <%= form.text_field :direccion, class: 'form-control', placeholder: 'Dirección: Calle 1 n°111', required:true %>
 		    </div>
 
 		</div>
 
 		<div class="form-group">
 			<%= form.label 'URL Imagen' %>
-			<%= form.url_field :img_link, class: 'form-control', placeholder: 'http://host.com/imagen.png', required:true %>
+			<%= form.url_field :img_link, class: 'form-control', placeholder: 'URL link de la residencia: http://host.com/imagen.png', required:true %>
 		</div>
 
 		<div class="form-group">
 			<%= form.label 'Descripcion' %>
-			<%= form.text_area :desc, class: 'form-control', placeholder: 'La residencia cuenta con ...', required:true %>
+			<%= form.text_area :desc, class: 'form-control', placeholder: 'Descripción de la residencia: La residencia cuenta con ...', required:true %>
 		</div>
 
 		<div class="actions">

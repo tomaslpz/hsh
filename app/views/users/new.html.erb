@@ -1,7 +1,7 @@
 
 
 <% provide(:title, 'Sign up') %>
-
+<% provide(:button_text, 'Registrarse') %>
 
 <div class="row">
 
@@ -15,28 +15,34 @@
     <h1>Unite a nuestra comunidad!</h1>
 
     <%= form_for(@user) do |f| %>
-      <%= f.label :name, 'Nombre'%>
-      <%= f.text_field :name %>
 
-      <%= f.label :email, 'Email'%>
-      <%= f.email_field :email %>
+      <%= f.label :name, 'Nombre' %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :birth_date, 'Fecha de nacimiento'%>
-      <%= f.date_field :birth_date %>
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :birth_date, 'Fecha de nacimiento' %>
+      <%= f.date_field :birth_date, class: 'form-control' %>
 
       <%= f.label :numTarjeta, 'Número de tarjeta' %>
-      <%= f.text_field :numTarjeta %>
+      <%= f.text_field :numTarjeta, class: 'form-control' %>
 
-      <%= f.label :codTarjeta, 'Código de tarjeta' %>
-      <%= f.password_field :codTarjeta %>
+      <%= f.label :codTarjeta, 'Código de Tarjeta' %>
+      <%= f.password_field :codTarjeta, class: 'form-control' %>
 
-      <%= f.label :password, "Contraseña" %>
-      <%= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Confirmar contraseña" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :password, 'Contraseña'%>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, 'Repetir contraseña' %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.hidden_field :esPremium, :value => false %>
 
       <%= f.submit "Registrarse!", class: "btn btn-primary" %>
-    <% end %>
+
+
+      <% end %>
   </div>
 </div>

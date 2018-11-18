@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_194937) do
+ActiveRecord::Schema.define(version: 2018_11_18_005228) do
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_194937) do
     t.string "name"
     t.string "email"
     t.date "birth_date"
+    t.boolean "esPremium"
   end
 
 end

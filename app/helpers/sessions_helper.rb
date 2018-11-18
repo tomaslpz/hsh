@@ -20,6 +20,9 @@ module SessionsHelper
     end
   end
 
+
+
+
   def current_user
     if session[:user_id]
       @current_user ||=
@@ -35,6 +38,12 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def user_premium?
+    if logged_in_user?
+      current_user.esPremium
+    end
+  end
+  
   def log_out
       if !:admin_id.nil?
         session.delete(:admin_id)
@@ -44,5 +53,5 @@ module SessionsHelper
         session.delete(:user_id)
         @current_user = nil
       end
-      
+
   end
