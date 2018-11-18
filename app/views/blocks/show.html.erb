@@ -65,7 +65,7 @@
 	<% end %>
 
 	<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
-		<% if logged_in? %>
+		<% if logged_in_admin? %>
 			<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
 		<% else %>
 			<h5>Bloque adjudicado!</h5>
@@ -76,7 +76,7 @@
 
 	<!-- Subasta -->
 
-	<% if logged_in? %>
+	<% if logged_in_admin? %>
 		<%= form_for(@block) do |b| %>
 			<div class="input-group">
 				<%= b.hidden_field :estado, :value => 0 %>
@@ -145,7 +145,7 @@
 
 		<h5>Precio del bloque <span class="badge badge-success"><%= @block.precio %></span></h5>
 
-		<% if logged_in? %>
+		<% if logged_in_admin? %>
 
 			<%= form_for(@block) do |b| %>
 				<div class="input-group">
@@ -172,7 +172,7 @@
 	<% else %>
 
 		<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
-			<% if logged_in? %>
+			<% if logged_in_admin? %>
 				<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
 			<% else %>
 				<h5>Bloque adjudicado!</h5>
