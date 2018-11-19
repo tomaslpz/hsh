@@ -71,11 +71,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_184453) do
     t.integer "numTarjeta"
     t.string "name"
     t.string "email"
-<<<<<<< HEAD
-=======
-    t.date "birth_date"
-    t.boolean "esPremium"
->>>>>>> d8774d86657f0faa2d6e1ab03d50c7c131cccbcf
   end
 
 end
