@@ -7,7 +7,7 @@
 <div class="card rounded-0">
 	<div class="card-header d-flex flex-column flex-md-row align-items-center">
 		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
-			<%= @var.nombre %>
+			<a href="<%= residence_path(@var) %>"><%= @var.nombre %></a>
 		</h5>
 		<h5><span class="badge badge-info mr-3"><%= notice %></span></h3>
 		<% if logged_in_admin? %>
