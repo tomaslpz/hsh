@@ -186,7 +186,7 @@
 	<% else %>
 
 		<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
-			<% if logged_in? %>
+			<% if logged_in_admin? %>
 				<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
 			<% else %>
 				<h5>Bloque adjudicado!</h5>
