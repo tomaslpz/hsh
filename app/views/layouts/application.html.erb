@@ -29,7 +29,9 @@
 								<%= link_to "Log out", logout_path, method: :delete, class:'btn btn-outline-primary rounded-0' %>
 									<%= link_to "Ver perfil", current_user, method: :get, class:'btn btn-outline-primary rounded-0' %>
 							<% else %>
-      				<a class="btn btn-outline-primary rounded-0" href="/login">Iniciar Sesion</a>
+							<a class="btn btn-outline-primary rounded-0" href="/login">Iniciar Sesion</a>
+							<%= link_to "Registrarse!", signup_path, method: :get, class:'btn btn-outline-primary rounded-0' %>
+
 				<% end %>
 			<% end %>
 			</nav>

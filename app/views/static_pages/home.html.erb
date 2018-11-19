@@ -1,5 +1,7 @@
 <div class="row justify-content-md-center mb-3">
+	<% if logged_in_admin? || logged_in_user? %>
 	<a href="/residences" class="btn btn-primary col-md-6 rounded-0">Lista de Residencias</a>
+	<% end %>
 </div>
 
 <div class="row justify-content-md-center">
