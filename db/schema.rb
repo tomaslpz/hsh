@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_184453) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2018_11_18_005228) do
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -71,6 +68,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_184453) do
     t.integer "numTarjeta"
     t.string "name"
     t.string "email"
+    t.date "birth_date"
+    t.boolean "esPremium"
   end
 
 end
