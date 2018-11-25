@@ -1,5 +1,5 @@
 class BlocksController < ApplicationController
-  before_action :set_block, only: [:show, :edit, :update, :destroy]
+  before_action :set_block, only: [:show, :edit, :update, :destroy, :salir_subasta]
 
   # GET /blocks
   # GET /blocks.json
@@ -60,6 +60,20 @@ class BlocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def salir_subasta
+    @entrada = @block.entries.where(:user_id => params[:user_id]).first
+    @pujas = @entrada.bids
+    @pujas.each do |pujas|
+      pujas.destroy
+    end
+    @entrada.destroy
+    respond_to do |format|
+      format.html { redirect_to @block, notice: 'Has salido de la subasta' }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

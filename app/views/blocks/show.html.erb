@@ -52,8 +52,8 @@
 
 			<%= form_for(Entry.new) do |e| %>
 				<div class="input-group">
-					<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
 					<%= e.hidden_field :block_id, :value => @block.id %>
+					<%= e.hidden_field :user_id, :value => current_user.id %>
 					<div class="input-group-append p-0 m-0 col-6">
 						<%= e.submit "Participar", class: 'btn btn-secondary rounded-0' %>
 					</div>
@@ -101,7 +101,12 @@
 	<% else %>
 
 		<%= form_for(Bid.new) do |formulario| %>
-  			<div class="input-group">
+				<div class="p-0 m-0 col-4">
+					<%= formulario.submit "Salir de la Subasta", class: 'btn btn-danger rounded-0' %>
+						<%= formulario.hidden_field :block_id, :value => @block.id %>
+				<br></br>
+				</div>
+				<div class="input-group">
   				<%= text_field_tag :email, nil, class: 'form-control rounded-0 col-5 m-0', type: 'email', placeholder: 'participante@mail.com', required: true %>
 				<%= formulario.text_field :valor, class: 'form-control rounded-0 col-5 m-0', placeholder: 'monto', oninput:'check(this)' %>
   				<%= formulario.hidden_field :block_id, :value => @block.id %>
