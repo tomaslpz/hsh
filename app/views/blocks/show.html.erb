@@ -1,6 +1,7 @@
 <% case @block.estado %>
 <% when 0 #bloque normal %>
 
+<<<<<<< HEAD
 	<% if logged_in_admin? %>
 
 		<% if((@block.fecha << 6) <=> Date.today) <= 0 %>
@@ -141,6 +142,13 @@
 			</div>
 		<%end%>
 	</div>
+=======
+	<%= render 'blocknormal', block: @block %>
+
+<% when 1 #bloque en subasta %>
+
+	<%= render 'blocksubasta', block: @block %>
+>>>>>>> e55fe8da41cb897310c621a06d20dd0d861ec1c2
 
 <% when 2 #bloque en hotsale %>
 

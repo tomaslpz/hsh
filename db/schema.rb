@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_19_180622) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_19_164351) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> e55fe8da41cb897310c621a06d20dd0d861ec1c2
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -70,8 +77,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_180622) do
     t.integer "numTarjeta"
     t.string "name"
     t.string "email"
-    t.date "birth_date"
     t.boolean "esPremium"
+    t.date "birth_date"
   end
 
 end
