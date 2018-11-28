@@ -12,9 +12,8 @@ class User < ApplicationRecord
 
   validates :codTarjeta, presence: true, length: { maximum: 4 }
 
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  validates :password_confirmation, presence: true, length: { minimum: 6 }, allow_nil: true
 
   validates :birth_date, presence: true
   validate :validate_age
