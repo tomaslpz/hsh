@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	resources :blocks, :path => 'blocks'
 	get 'blocks(/fecha/:fecha)(/rid/:residence_id)', controller: 'blocks', action: 'show'
 
-  get '/blocks(/id/:id)(/uid/:user_id)', controller: 'blocks', action: 'salir_subasta'
+  get 'blocks(/id/:id)(/uid/:user_id)', controller: 'blocks', action: 'salir_subasta'
 
 	get 'sessions/new'
 	root 'static_pages#home'
