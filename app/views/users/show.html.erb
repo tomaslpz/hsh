@@ -1,11 +1,22 @@
 <div class='row'>
-  <aside class="col-md-12 text-center">
-    <section class='admin_info'>
-    <h1>
-	  <br>
-      Usuario <%= @user.name %>
-    
-    </h1>
-    </section>
-  </aside>
+	<aside class="col-md-12">
+		<section class='admin_info'>
+			<h1><%= @user.name %></h1>
+			<br>
+			<table class="table">
+			<tr>
+				<td>Email</td>
+				<td><%= @user.email %></td>
+			</tr>
+			<tr>
+				<td>Numero de tarjeta</td>
+				<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
+			</tr>
+			<tr>
+				<td>Premium</td>
+				<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
+			</tr>
+			</table>
+    	</section>
+	</aside>
 </div>
