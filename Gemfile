@@ -66,5 +66,4 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 gem 'jquery-rails'
 gem 'hirb'
-gem 'sqlite3'
 gem 'bcrypt', '3.1.12'
