@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_170647) do
+ActiveRecord::Schema.define(version: 2018_11_29_184518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,13 +79,13 @@ ActiveRecord::Schema.define(version: 2018_11_29_170647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.integer "codTarjeta"
-    t.integer "numTarjeta"
     t.string "name"
     t.string "email"
     t.boolean "esPremium"
     t.date "birth_date"
     t.integer "user_configs_id"
+    t.integer "codTarjeta"
+    t.bigint "numTarjeta"
     t.index ["user_configs_id"], name: "index_configsuser_id"
   end
 
