@@ -1,5 +1,11 @@
 class BlocksController < ApplicationController
+<<<<<<< HEAD
+  before_action :set_block, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in, only: [:edit, :update, :show, :destroy, :new]
+
+=======
   before_action :set_block, only: [:show, :edit, :update, :destroy, :salir_subasta]
+>>>>>>> 1498d05bd0c8ff1a12cc3ca1e90df18c61aae133
 
   # GET /blocks
   # GET /blocks.json
@@ -76,6 +82,13 @@ class BlocksController < ApplicationController
 
 
   private
+
+  def logged_in
+    unless logged_in_user? || logged_in_admin?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
 	def set_block
 		if (Residence.find_by_id(params[:residence_id]) != nil)
