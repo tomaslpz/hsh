@@ -36,14 +36,16 @@
 
 	<%= form_for(Bid.new) do |formulario| %>
 		<div class="input-group">
-			<%= text_field_tag :email, nil, class: 'form-control rounded-0 col-5 m-0', type: 'email', placeholder: 'participante@mail.com', required: true %>
 			<%= formulario.text_field :valor, class: 'form-control rounded-0 col-5 m-0', placeholder: 'monto', oninput:'check(this)' %>
 			<%= formulario.hidden_field :block_id, :value => block.id %>
+			<%= formulario.hidden_field :user_id, :value => current_user.id %>
 			<div class="input-group-append p-0 m-0 col-2">
 				<%= formulario.submit "Pujar!", class: 'btn btn-success rounded-0' %>
 			</div>
 		</div>
 	<% end %>
+
+		<a href="/blocks/id/<%=block.id%>/uid/<%=current_user.id%>" class= 'btn btn-danger col-6 rounded-0'>Salir Subasta</a>
 
 	<script>
 		function check(input) {

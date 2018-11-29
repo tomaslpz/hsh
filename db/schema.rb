@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_28_220412) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2018_11_19_180622) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_19_164351) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> e55fe8da41cb897310c621a06d20dd0d861ec1c2
+>>>>>>> 1498d05bd0c8ff1a12cc3ca1e90df18c61aae133
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -45,7 +56,9 @@ ActiveRecord::Schema.define(version: 2018_11_28_220412) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "block_id"
+    t.integer "user_id"
     t.index ["block_id"], name: "index_block_id"
+    t.index ["user_id"], name: "index_user_id"
   end
 
   create_table "residences", force: :cascade do |t|

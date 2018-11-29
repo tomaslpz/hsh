@@ -45,16 +45,18 @@
 
 		<% else %>
 
-			<%= form_for(Entry.new) do |e| %>
-				<div class="input-group">
-					<%= e.text_field :email, class: 'form-control rounded-0 col-6' %>
-					<%= e.hidden_field :block_id, :value => block.id %>
-					<div class="input-group-append p-0 m-0 col-6">
-						<%= e.submit "Participar", class: 'btn btn-secondary rounded-0' %>
-					</div>
+		<%= form_for(Entry.new) do |e| %>
+			<div class="input-group">
+				<%= e.hidden_field :block_id, :value => @block.id %>
+				<%= e.hidden_field :user_id, :value => current_user.id %>
+				<div class="input-group-append p-0 m-0 col-6">
+					<%= e.submit "Participar", class: 'btn btn-secondary rounded-0' %>
 				</div>
-			<% end %>
+			</div>
+		<% end %>
 
+
+		<a href="/blocks/id/<%=block.id%>/uid/<%=current_user.id%>" class= 'btn btn-danger col-6 rounded-0'>Salir Subasta</a>
 		<% end %>
 
 	<% end %>
