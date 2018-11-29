@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   has_many :entries
   has_many :bids
+  has_one :user_configs
 
   has_secure_password
 

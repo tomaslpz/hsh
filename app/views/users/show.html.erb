@@ -1,22 +1,30 @@
-<div class='row'>
-	<aside class="col-md-12">
-		<section class='admin_info'>
-			<h1><%= @user.name %></h1>
-			<br>
-			<table class="table">
-			<tr>
-				<td>Email</td>
-				<td><%= @user.email %></td>
-			</tr>
-			<tr>
-				<td>Numero de tarjeta</td>
-				<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
-			</tr>
-			<tr>
-				<td>Premium</td>
-				<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
-			</tr>
-			</table>
-    	</section>
-	</aside>
-</div>
+<% if logged_in_admin? || (logged_in_user? && current_user.id == @user.id) %>
+
+	<div class='row'>
+		<aside class="col-md-12">
+			<section class='admin_info'>
+				<h1><%= @user.name %></h1>
+				<br>
+				<table class="table">
+				<tr>
+					<td>Fecha de nacimiento</td>
+					<td><%= @user.birth_date %></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><%= @user.email %></td>
+				</tr>
+				<tr>
+					<td>Numero de tarjeta</td>
+					<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
+				</tr>
+				<tr>
+					<td>Premium</td>
+					<td><%= @user.esPremium ? '✓' : '✗' %></td>
+				</tr>
+				</table>
+			</section>
+		</aside>
+	</div>
+
+<% end %>

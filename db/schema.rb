@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_11_19_180622) do
-=======
-ActiveRecord::Schema.define(version: 2018_11_19_164351) do
+ActiveRecord::Schema.define(version: 2018_11_29_132814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
->>>>>>> e55fe8da41cb897310c621a06d20dd0d861ec1c2
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -69,6 +65,15 @@ ActiveRecord::Schema.define(version: 2018_11_19_164351) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_configs", force: :cascade do |t|
+    t.boolean "esPremium"
+    t.integer "creditos"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_userconfigs_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +84,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_164351) do
     t.string "email"
     t.boolean "esPremium"
     t.date "birth_date"
+    t.integer "user_configs_id"
+    t.index ["user_configs_id"], name: "index_configsuser_id"
   end
 
 end

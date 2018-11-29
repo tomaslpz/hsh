@@ -9,48 +9,7 @@
 
 <% when 2 #bloque en hotsale %>
 
-
-	<!-- Hotsale -->
-
-	<% if @block.adjudicado == '' || @block.adjudicado == nil %>
-
-		<h5>Precio del bloque <span class="badge badge-success"><%= @block.precio %></span></h5>
-
-		<% if logged_in_admin? %>
-
-			<%= form_for(@block) do |b| %>
-				<div class="input-group">
-					<%= b.hidden_field :estado, :value => 0 %>
-					<div class="input-group-append p-0 m-0 col-12">
-						<%= b.submit "Cerrar Hotsale", class: 'btn btn-primary rounded-0' %>
-					</div>
-				</div>
-			<% end %>
-
-		<% else %>
-
-			<%= form_for(@block) do |formulario| %>
-				<div class="input-group">
-					<%= formulario.text_field :adjudicado, class: 'form-control rounded-0 col-6' %>
-					<div class="input-group-append p-0 m-0 col-6">
-						<%= formulario.submit "Adjudicarme este bloque!", class: 'btn btn-primary rounded-0' %>
-					</div>
-				</div>
-			<% end %>
-
-		<% end %>
-
-	<% else %>
-
-		<% if !(@block.adjudicado == '' || @block.adjudicado == nil) %>
-			<% if logged_in_admin? %>
-				<h5>Bloque adjudicado a <%= @block.adjudicado %></h5>
-			<% else %>
-				<h5>Bloque adjudicado!</h5>
-			<% end %>
-		<% end %>
-
-	<% end %>
+	<%= render 'blockhotsale', block: @block %>
 
 <% end %>
 
