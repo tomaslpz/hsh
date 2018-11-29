@@ -8,9 +8,7 @@ class EntriesController < ApplicationController
 
   def create
 
-    @e = Entry.new
-    @e.email = params[:entry][:email]
-    @e.block_id = params[:entry][:block_id]
+    @e = Entry.new(entry_params)
 	if @e.save
 		respond_to do |format|
 			format.html { redirect_to Block.find(@e.block_id), notice: 'Participacion agregada con exito.' }
@@ -18,7 +16,7 @@ class EntriesController < ApplicationController
 		end
 	else
 		respond_to do |format|
-			format.html { redirect_to Block.find(@e.block_id), notice: 'Error' }
+			format.html { redirect_to Block.find(@e.block_id), notice: @e.errors.full_messages.first }
 			format.json { head :no_content }
 		end
 	end
@@ -28,6 +26,12 @@ class EntriesController < ApplicationController
 
   def new
 
+  end
+
+  private
+
+  def entry_params
+	params.require(:entry).permit(:email, :user_id, :block_id)
   end
   
 end

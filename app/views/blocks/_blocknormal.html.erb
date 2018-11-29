@@ -45,18 +45,25 @@
 
 		<% else %>
 
-		<%= form_for(Entry.new) do |e| %>
-			<div class="input-group">
-				<%= e.hidden_field :block_id, :value => @block.id %>
-				<%= e.hidden_field :user_id, :value => current_user.id %>
-				<div class="input-group-append p-0 m-0 col-6">
-					<%= e.submit "Participar", class: 'btn btn-secondary rounded-0' %>
-				</div>
-			</div>
-		<% end %>
+			<% if block.entries.where(:email => current_user.email).first == nil %>
 
+				<%= form_for(Entry.new) do |formulario| %>
+					<div class="input-group">
+						<%= formulario.hidden_field :block_id, :value => block.id %>
+						<%= formulario.hidden_field :user_id, :value => current_user.id %>
+						<%= formulario.hidden_field :email, :value => current_user.email %>
+						<div class="input-group-append p-0 m-0 col-6">
+							<%= formulario.submit "Participar", class: 'btn btn-secondary rounded-0' %>
+						</div>
+					</div>
+				<% end %>
 
-		<a href="/blocks/id/<%=block.id%>/uid/<%=current_user.id%>" class= 'btn btn-danger col-6 rounded-0'>Salir Subasta</a>
+			<% else %>
+
+				<a href="/blocks/id/<%=block.id%>/uid/<%=current_user.id%>" class= 'btn btn-danger col-6 rounded-0'>Salir Subasta</a>
+
+			<% end %>
+		
 		<% end %>
 
 	<% end %>

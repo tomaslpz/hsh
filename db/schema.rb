@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_11_29_170647) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +40,7 @@
     t.integer "residence_id"
     t.float "precio"
     t.integer "estado"
+    t.integer "adjudicadoid"
     t.index ["residence_id"], name: "index_residence_id"
   end
 

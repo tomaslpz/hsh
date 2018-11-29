@@ -8,12 +8,10 @@ class BidsController < ApplicationController
 		@bid = Bid.new
 		@bid.valor = params[:bid][:valor]
 		@bid.block_id = params[:bid][:block_id]
-		@entry = Block.find(params[:bid][:block_id]).entries.where(:email => params[:email]).first
+		@entry = Block.find(params[:bid][:block_id]).entries.where(:email => params[:bid][:email]).first
 
 		if (@entry == nil)
-
-			@entry = Entry.create(:email => params[:email], :block_id => params[:bid][:block_id])
-			
+			@entry = Entry.create(:user_id => params[:bid][:user_id], :email => params[:bid][:email], :block_id => params[:bid][:block_id])
 		end
 
 		@bid.entry_id = @entry.id
@@ -25,7 +23,7 @@ class BidsController < ApplicationController
 		  end
 	  else
 		  respond_to do |format|
-			  format.html { redirect_to Block.find(@bid.block_id), notice: @bid.errors.full_messages.first + @eee.ids.first.to_s }
+			  format.html { redirect_to Block.find(@bid.block_id), notice: @bid.errors.full_messages.first }
 			  format.json { head :no_content }
 		  end
 	  end

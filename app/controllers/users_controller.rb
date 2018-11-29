@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+	before_action :check_login, only: [:index, :show, :edit, :update, :destroy]
+
 	def index
-		@users= User.all
+		@users = User.joins(:user_configs).order(esPremium: :desc).merge(UserConfigs.order(esPremium: :asc))
 	end
 
 	def new
@@ -42,9 +44,38 @@ class UsersController < ApplicationController
         end
     end
 
+	def solicitar_premium
+		@user = User.find(params[:id])
+		@user.esPremium = true
+		if @user.save
+			redirect_to @user
+		end
+	end
 
-      def user_params
-         params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :email, :password,
+	def autorizar_premium
+		if !logged_in_admin?
+			redirect_to '/'
+		else
+			@user = User.find(params[:id])
+			@user.user_configs.esPremium = true;
+			if @user.user_configs.save
+				redirect_to @user
+			end
+		end
+	end
+
+    def user_params
+        params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :email, :password,
                                       :password_confirmation, :birth_date, :esPremium)
-       end
+	end
+	
+	private
+
+	def check_login
+		unless logged_in_user? || logged_in_admin?
+			flash[:danger] = "Please log in."
+			redirect_to login_url
+		end
+	end
+
 end

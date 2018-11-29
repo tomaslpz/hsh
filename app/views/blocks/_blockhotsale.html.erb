@@ -1,8 +1,10 @@
+<% @adjudicado = (block.adjudicado != '' && block.adjudicado != nil && block.adjudicadoid != nil) %>
+
 <h5>Precio del bloque <span class="badge badge-success"><%= block.precio %></span></h5>
 
 <% if logged_in_admin? %>
 
-	<% if !(block.adjudicado == '' || block.adjudicado == nil) %>
+	<% if @adjudicado %>
 
 		<h5>Bloque adjudicado a <%= block.adjudicado %></h5>
 
@@ -23,7 +25,7 @@
 
 <% if logged_in_user? %>
 
-	<% if !(block.adjudicado == '' || block.adjudicado == nil) %>
+	<% if @adjudicado %>
 
 		<h5>Bloque adjudicado!</h5>
 
@@ -31,8 +33,9 @@
 
 		<%= form_for(block) do |formulario| %>
 			<div class="input-group">
-				<%= formulario.text_field :adjudicado, class: 'form-control rounded-0 col-6' %>
-				<div class="input-group-append p-0 m-0 col-6">
+				<%= formulario.hidden_field :adjudicadoid, value: current_user.id %>
+				<%= formulario.hidden_field :adjudicado, value: current_user.email %>
+				<div class="input-group-append p-0 m-0 col-12">
 					<%= formulario.submit "Adjudicarme este bloque!", class: 'btn btn-primary rounded-0' %>
 				</div>
 			</div>

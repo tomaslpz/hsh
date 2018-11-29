@@ -1,11 +1,6 @@
 class BlocksController < ApplicationController
-<<<<<<< HEAD
   before_action :set_block, only: [:show, :edit, :update, :destroy]
   before_action :logged_in, only: [:edit, :update, :show, :destroy, :new]
-
-=======
-  before_action :set_block, only: [:show, :edit, :update, :destroy, :salir_subasta]
->>>>>>> 1498d05bd0c8ff1a12cc3ca1e90df18c61aae133
 
   # GET /blocks
   # GET /blocks.json
@@ -68,7 +63,8 @@ class BlocksController < ApplicationController
   end
 
   def salir_subasta
-    @entrada = @block.entries.where(:user_id => params[:user_id]).first
+	@block = Block.find(params[:id])
+    @entrada = @block.entries.where(:user_id => (params[:user_id].to_i)).first
     @pujas = @entrada.bids
     @pujas.each do |pujas|
       pujas.destroy
@@ -79,7 +75,6 @@ class BlocksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   private
 
@@ -104,6 +99,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:fecha, :precio, :estado, :adjudicado, :residence_id)
+    	params.require(:block).permit(:fecha, :precio, :estado, :adjudicado, :residence_id, :adjudicadoid)
     end
 end

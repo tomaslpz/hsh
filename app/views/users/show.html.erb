@@ -3,7 +3,23 @@
 	<div class='row'>
 		<aside class="col-md-12">
 			<section class='admin_info'>
-				<h1><%= @user.name %></h1>
+				<h1>
+					<%= @user.name %>
+					<% if (logged_in_user? && current_user.id == @user.id) %>
+						<% if !@user.esPremium && !@user.user_configs.esPremium %>
+							<a href="/users/id/<%=@user.id%>/s" class="btn btn-primary rounded-0 ml-3">Solicitar Premium</a>
+						<% else %>
+							<% if !@user.user_configs.esPremium %>
+								<a href="" class="btn btn-secondary rounded-0 ml-3">Esperando autorizacion</a>
+							<% end %>
+						<% end %>
+					<% end %>
+					<% if logged_in_admin? %>
+						<% if @user.esPremium && !@user.user_configs.esPremium %>
+							<a href="/users/id/<%=@user.id%>/p" class="btn btn-primary rounded-0 ml-3">Autorizar Premium</a>
+						<% end %>
+					<% end %>
+				</h1>
 				<br>
 				<table class="table">
 				<tr>
@@ -20,7 +36,7 @@
 				</tr>
 				<tr>
 					<td>Premium</td>
-					<td><%= @user.esPremium ? '✓' : '✗' %></td>
+					<td>Solicitado: <%= @user.esPremium ? '✓' : '✗' %> Autorizado: <%= @user.user_configs.esPremium ? '✓' : '✗' %></td>
 				</tr>
 				</table>
 			</section>

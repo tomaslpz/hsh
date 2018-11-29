@@ -20,17 +20,23 @@
 		</a>
 	</div>
 	<% if @hotsale != nil %>
-	<div class="col-md-6">
-		<a href="/blocks/<%=@hotsale.id%>" class="cardlink">
-			<div class="card box-shadow rounded-0 p-0 m-0">
-				<div class="card-header"><span class="badge badge-success rounded-0">HOTSALE DISPONIBLE!</span><span class="badge badge-info rounded-0"><%= @hotsale.fecha%></span></div>
-				<img class="card-img-top rounded-0" src="<%=@hotsale.residence.img_link%>" alt="Card image cap">
-				<div class="card-body">
-					<p class="card-text"><strong><%=@hotsale.residence.nombre%></strong></p>
-					<p class="card-text"><%=@hotsale.residence.desc%></p>
+		<div class="col-md-6">
+			<a href="/blocks/<%=@hotsale.id%>" class="cardlink">
+				<div class="card box-shadow rounded-0 p-0 m-0">
+					<div class="card-img-overlay">
+						<h3>
+							<span class="badge badge-success rounded-0">HOTSALE DISPONIBLE!</span>
+							<span class="badge badge-success rounded-0">$<%= @hotsale.precio%></span>
+							<span class="badge badge-info rounded-0"><%= @hotsale.fecha%></span>
+						</h3>
+					</div>
+					<img class="card-img-top rounded-0" src="<%=@hotsale.residence.img_link%>" alt="Card image cap">
+					<div class="card-body">
+						<p class="card-text"><strong><%=@hotsale.residence.nombre%></strong></p>
+						<p class="card-text"><%=@hotsale.residence.desc%></p>
+					</div>
 				</div>
-			</div>
-		</a>
-	</div>
+			</a>
+		</div>
 	<% end %>
 </div>

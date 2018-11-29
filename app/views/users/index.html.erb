@@ -1,1 +1,3 @@
-<%= render 'listaUsuario', usuarios: @users %>
+<% if logged_in_admin? %>
+	<%= render 'listaUsuario', usuarios: @users %>
+<% end %>
