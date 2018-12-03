@@ -1,13 +1,13 @@
-
-
-  <div id='error_explanation'>
+<% if user.errors.count != 0 %>
+<div id='error_explanation'>
     <div class= 'alert alert-danger'>
-      El formulario contiene <%= pluralize(@user.errors.count, 'errores') %>
+      El formulario contiene <%= pluralize(user.errors.count, 'errores') %>
     </div>
 
     <ul>
-      <% @user.errors.full_messages.each do |msg| %>
+      <% user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
       <% end %>
     </ul>
   </div>
+<% end %>

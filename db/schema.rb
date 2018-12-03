@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_184518) do
+ActiveRecord::Schema.define(version: 2018_12_03_204620) do
 
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
@@ -82,7 +82,14 @@ ActiveRecord::Schema.define(version: 2018_11_29_184518) do
     t.boolean "esPremium"
     t.date "birth_date"
     t.integer "user_configs_id"
+<<<<<<< HEAD
     t.integer "numTarjeta", limit: 8
+=======
+    t.integer "codTarjeta"
+    t.bigint "numTarjeta"
+    t.bigint "dni"
+    t.string "apellido"
+>>>>>>> cfaed466c665006f25d779fa6c83c6ceedb2b6ea
     t.index ["user_configs_id"], name: "index_configsuser_id"
   end
 
