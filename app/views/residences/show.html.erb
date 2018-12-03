@@ -7,13 +7,21 @@
 
 	$(function () {
 
+		var seis = (new Date()).setMonth(new Date().getMonth()+6);
+		var ocho = (new Date()).setMonth(new Date().getMonth()+8);
 		$('#dtpc').html('<div id="dtp"></div>');
 		$('#dtp').datetimepicker({
 			inline: true,
 			sideBySide: true,
 			format: 'MM/dd/YYYY',
 			daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
+			<% if logged_in_admin? %>
 			minDate: new Date()
+			<% else %>
+			minDate: seis,
+			maxDate: ocho
+			<% end %>
+			
 		});
 		$("#dtp").on("dp.change", function(event) {
 			var fecha = event.date._d.toJSON().split('T')[0];
@@ -27,6 +35,10 @@
 		e.oldDate = $("#dtp").data("DateTimePicker").date();
 		
 		$('#dtp').trigger(e);
+
+		$('.glyphicon.glyphicon-chevron-left').html('<');
+		$('.glyphicon.glyphicon-chevron-right').html('>');
+
 	});
 </script>
 

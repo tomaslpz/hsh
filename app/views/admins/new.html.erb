@@ -1,24 +1,22 @@
-
-<% provide(:title , @admin.codigo) %>
+<% provide(:title , 'Nuevo administrador') %>
 
 <% if logged_in_admin? %>
-<div class='row text-center'>
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-6 card">
-    <h3>Crear administrador</h3>
-
-    <%= form_for(@admin) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :codigo%>
-      <%= f.text_field :codigo, class: 'form-control' %>
-
-      <%= f.submit "Crear un nuevo administrador", class:"btn btn-primary" %>
-
-      <% end %>
-    </div>
-</div>
+	<div class='row text-center'>
+		<div class="col-3"></div>
+		<div class="col-6">
+			<div class="card rounded-0">
+				<div class="card-header">
+					<h3>Crear administrador</h3>
+				</div>
+				<%= form_for(@admin) do |f| %>
+					<%= render 'shared/error_messages', user: @admin %>
+					<%= f.label :codigo %>
+					<%= f.text_field :codigo, class: 'form-control rounded-0', required:true %>
+					<%= f.submit "Crear un nuevo administrador", class:"btn btn-primary rounded-0" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 <% else %>
-Acceso denegado :)
+	Acceso denegado :)
 <% end %>

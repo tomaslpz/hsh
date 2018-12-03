@@ -4,24 +4,30 @@
 	<% @var = @block.residence %>
 <% end %>
 
-<div class="card rounded-0">
-	<div class="card-header d-flex flex-column flex-md-row align-items-center">
-		<h5 class="text-capitalize p-0 m-0 mr-md-auto font-weight-bold">
-			<a href="<%= residence_path(@var) %>"><%= @var.nombre %></a>
-		</h5>
-		<h5><span class="badge badge-info mr-3"><%= notice %></span></h3>
-		<% if logged_in_admin? %>
-			<%= link_to 'Modificar', edit_residence_path(@var), class: 'btn btn-warning mr-2 rounded-0' %>
-			<%= link_to 'Eliminar', @var, method: :delete, class: 'btn btn-danger mr-2 rounded-0', data: { confirm: 'Estas seguro?' } %>
-		<% end %>
-	</div>
-	<div class="card-body">
+<div class="card rounded-0 border-0">
+	<div class="card-body m-0">
 		<div class="row">
 			<div class="col-6 p-0 m-0">
-				<img style="width: 100% !important;" src="<%= @var.img_link %>">
+				<div class="card border-0">
+					<div class="card-header p-0 m-0 border-0">
+						<h3 class="m-0 p-0">
+							<span class="badge badge-primary rounded-0 border">
+							<a href="<%= residence_path(@var) %>" class="btn btn-outline-light mr-md-auto rounded-0">Atras</a>
+								<%= @var.nombre %>
+							</span>
+							<% if logged_in_admin? %>
+								<%= link_to 'Modificar', edit_residence_path(@var), class: 'btn btn-warning rounded-0 m-0', style:'height: 100% !important;' %>
+								<%= link_to 'Eliminar', @var, method: :delete, class: 'btn btn-danger mr-2 rounded-0', data: { confirm: 'Estas seguro?' } %>
+							<% end %>
+						</h3>
+						
+					</div>
+					<img class="card-img-top rounded-0" style="width: 100% !important;" src="<%= @var.img_link %>">
+				</div>
 			</div>
 			<ul class="list-group list-group-flush col-6">
 				<li class="list-group-item">
+					<h5><span class="badge badge-info mr-3"><%= notice %></span></h5>
 					<p> <%= @var.desc %> </p>
 					<p class="font-weight-bold text-capitalize m-0">
 						<%= @var.direccion %><span class="text-muted">, <%= @var.ciudad %>, <%= @var.partido %>, <%= @var.provincia %></span>

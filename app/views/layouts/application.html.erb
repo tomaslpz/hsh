@@ -3,7 +3,7 @@
 
 	<head>
 
-		<title>Home Swich Home - <%= yield :title %></title>
+		<title>HSH - <%= yield :title %></title>
 
 		<%= csrf_meta_tags %>
     	<%= csp_meta_tag %>
@@ -22,7 +22,7 @@
 			</a>
 			<nav class="my-2 my-md-0 mr-md-3">
 				<% if logged_in_admin? %>
-					<%= link_to "Log out", logout_path, method: :delete, class:'btn btn-outline-primary rounded-0' %>
+					<%= link_to "Cerrar sesion", logout_path, method: :delete, class:'btn btn-outline-primary rounded-0' %>
 					<%= link_to "Nuevo administrador", new_admin_path, method: :get, class:'btn btn-outline-primary rounded-0' %>
 				<% else %>
 							<% if logged_in_user? %>

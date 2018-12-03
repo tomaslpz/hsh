@@ -32,7 +32,11 @@
 				</tr>
 				<tr>
 					<td>Numero de tarjeta</td>
-					<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
+					<% if logged_in_admin? %>
+						<td><%= @user.numTarjeta %></td>
+					<% else %>
+						<td>**** **** **** <%= @user.numTarjeta % 10000 %></td>
+					<% end %>
 				</tr>
 				<tr>
 					<td>Premium</td>
