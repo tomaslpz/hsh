@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_11_29_184518) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admins", force: :cascade do |t|
     t.string "codigo"
     t.datetime "created_at", null: false
@@ -79,13 +76,13 @@ ActiveRecord::Schema.define(version: 2018_11_29_184518) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "codTarjeta"
     t.string "name"
     t.string "email"
     t.boolean "esPremium"
     t.date "birth_date"
     t.integer "user_configs_id"
-    t.integer "codTarjeta"
-    t.bigint "numTarjeta"
+    t.integer "numTarjeta", limit: 8
     t.index ["user_configs_id"], name: "index_configsuser_id"
   end
 
