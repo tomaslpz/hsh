@@ -15,28 +15,33 @@
     <h1>Unite a nuestra comunidad!</h1>
 
     <%= form_for(@user) do |f| %>
+    	<%= render 'shared/error_messages', user: @user %>
 
       <%= f.label :name, 'Nombre' %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control', required:true %>
 
-      <%= f.label :email, 'Email' %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :apellido, 'Apellido' %>
+      <%= f.text_field :apellido, class: 'form-control', required:true %>
+
+      <%= f.label :dni, 'DNI' %>
+      <%= f.text_field :dni, class: 'form-control', required:true, minlength:7, maxlength:8 %>
 
       <%= f.label :birth_date, 'Fecha de nacimiento' %>
-      <%= f.date_field :birth_date, class: 'form-control' %>
+      <%= f.date_field :birth_date, class: 'form-control', required:true, max:(Date.today << 12*18).to_date %>
+
 
       <%= f.label :numTarjeta, 'Número de tarjeta' %>
-      <%= f.text_field :numTarjeta, class: 'form-control' %>
+      <%= f.text_field :numTarjeta, class: 'form-control', required:true, maxlength: 16, minlength: 16 %>
 
       <%= f.label :codTarjeta, 'Código de Tarjeta' %>
-      <%= f.password_field :codTarjeta, class: 'form-control' %>
+      <%= f.password_field :codTarjeta, class: 'form-control', required:true, maxlength: 3, minlength:3 %>
 
 
       <%= f.label :password, 'Contraseña'%>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', required:true, minlength: 6 %>
 
       <%= f.label :password_confirmation, 'Repetir contraseña' %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control', required:true, minlength: 6  %>
 
       <%= f.hidden_field :esPremium, :value => false %>
 

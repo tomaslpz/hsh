@@ -8,9 +8,14 @@ class User < ApplicationRecord
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: true
 
-  validates :numTarjeta, presence: true, length: { maximum: 16 }
+  validates :apellido, presence: true, length: { maximum: 50}
 
-  validates :codTarjeta, presence: true, length: { maximum: 4 }
+
+  validates :dni, presence: true, length: { maximum: 8, minimum: 7}, uniqueness: true
+
+  validates :numTarjeta, presence: true, length: { maximum: 16, minimum: 16 }
+
+  validates :codTarjeta, presence: true, length: { maximum: 3, minimum: 3 }
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 

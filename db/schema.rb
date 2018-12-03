@@ -82,14 +82,9 @@ ActiveRecord::Schema.define(version: 2018_12_03_204620) do
     t.boolean "esPremium"
     t.date "birth_date"
     t.integer "user_configs_id"
-<<<<<<< HEAD
     t.integer "numTarjeta", limit: 8
-=======
-    t.integer "codTarjeta"
-    t.bigint "numTarjeta"
-    t.bigint "dni"
+    t.integer "dni", limit: 8
     t.string "apellido"
->>>>>>> cfaed466c665006f25d779fa6c83c6ceedb2b6ea
     t.index ["user_configs_id"], name: "index_configsuser_id"
   end
 
