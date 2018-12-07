@@ -48,8 +48,8 @@ class UsersController < ApplicationController
     end
 
 	def solicitar_premium
-		if (logged_in_user? && current_user.id == params[:id])
-			@user = User.find(params[:id])
+		if (logged_in_user?)
+			@user = current_user
 			@user.esPremium = true
 			if @user.save
 				redirect_to @user
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 	end
 
     def user_params
-        params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :email, :password,
+        params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :apellido, :dni, :email, :password,
                                       :password_confirmation, :birth_date, :esPremium)
 	end
 	

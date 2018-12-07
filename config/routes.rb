@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	get 'search/(:query)', controller: 'residences', action: 'buscar'
 	get 'users/new'
 
 	resources :users

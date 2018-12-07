@@ -1,10 +1,15 @@
 <% provide(:title , 'Inicio') %>
 
-<div class="row justify-content-md-center mb-3">
-	<% if logged_in_user? %>
-		<a href="/residences" class="btn btn-primary col-md-6 rounded-0">Lista de Residencias</a>
+<% if logged_in_admin? || logged_in_user? %>
+	<%= form_tag('/search/', method: :get) do %>
+		<div class="input-group">
+			<%= text_field_tag :query, nil, :class => 'form-control rounded-0' %>
+			<div class="input-group-append">
+				<%= submit_tag 'Buscar', :class => 'btn btn-primary rounded-0' %>
+			</div>
+		</div>
 	<% end %>
-</div>
+<% end %>
 
 <div class="row justify-content-md-center">
 	<div class="col-md-6">

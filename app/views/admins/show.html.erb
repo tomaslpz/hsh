@@ -4,26 +4,25 @@
 
 	<h1>Panel de administracion</h1>
 
-	<div class='row'>
-	
-		<div class="card rounded-0 m-3">
-			<div class="card-body">
-				<a href="/residences" class="btn btn-outline-primary rounded-0">Lista de Residencias</a>
-			</div>
-		</div>
-
-		<div class="card rounded-0 m-3">
-			<div class="card-body">
-				<a href="/users" class="btn btn-outline-primary rounded-0">Lista de Usuarios</a>
-			</div>
-		</div>
-
-		<div class="card rounded-0 m-3">
-			<div class="card-body">
-				<%= link_to "Nuevo administrador", new_admin_path, method: :get, class:'btn btn-outline-primary rounded-0' %>
-			</div>
-		</div>
-
-	</div>
+	<table class='table'>
+		<tbody>
+			<tr>
+				<td>
+					<a href="/users" class="btn btn-outline-primary rounded-0 col-12">Lista de Usuarios</a>
+				</td>
+				<td>
+					<%= link_to "Nuevo administrador", new_admin_path, method: :get, class:'btn btn-outline-primary rounded-0 col-12' %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/residences" class="btn btn-outline-primary rounded-0 col-12">Lista de Residencias</a>
+				</td>
+				<td>
+					<a href="/residences/new" class="btn btn-outline-primary rounded-0 col-12">Nueva Residencia</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
 </div>

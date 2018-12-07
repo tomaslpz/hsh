@@ -1,7 +1,7 @@
 <% provide(:title, @residence.nombre) %>
 
-<div id="dtpc">
-</div>
+<div id="dtpc"></div>
+<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
 
 <script type="text/javascript">
 
@@ -36,12 +36,10 @@
 		
 		$('#dtp').trigger(e);
 
-		$('.glyphicon.glyphicon-chevron-left').html('<');
-		$('.glyphicon.glyphicon-chevron-right').html('>');
+		$('.glyphicon.glyphicon-chevron-left').html('<h3>←</h3>');
+		$('.glyphicon.glyphicon-chevron-right').html('<h3>→</h3>');
 
 	});
 </script>
-
-<a href="" id="bloque" class="col btn btn-primary rounded-0 m-0"></a>
 
 <% parent_layout "residencia" %>
