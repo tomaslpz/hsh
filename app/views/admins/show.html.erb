@@ -1,12 +1,29 @@
-<% provide(:title , @admin.codigo) %>
+<% provide(:title , 'Panel de administracion') %>
 
-<div class='row'>
-  <aside class="col-md-12 text-center">
-    <section class='admin_info'>
-    <h1>
-	  <br>
-      Usuario administrador
-    </h1>
-    </section>
-  </aside>
+<div class="container">
+
+	<h1>Panel de administracion</h1>
+
+	<div class='row'>
+	
+		<div class="card rounded-0 m-3">
+			<div class="card-body">
+				<a href="/residences" class="btn btn-outline-primary rounded-0">Lista de Residencias</a>
+			</div>
+		</div>
+
+		<div class="card rounded-0 m-3">
+			<div class="card-body">
+				<a href="/users" class="btn btn-outline-primary rounded-0">Lista de Usuarios</a>
+			</div>
+		</div>
+
+		<div class="card rounded-0 m-3">
+			<div class="card-body">
+				<%= link_to "Nuevo administrador", new_admin_path, method: :get, class:'btn btn-outline-primary rounded-0' %>
+			</div>
+		</div>
+
+	</div>
+
 </div>

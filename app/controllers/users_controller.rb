@@ -24,7 +24,10 @@ class UsersController < ApplicationController
     end
 
   	def show
-    	@user = User.find(params[:id])
+		@user = User.find(params[:id])
+		if !(logged_in_admin? || (logged_in_user? && current_user.id == @user.id))
+			redirect_to '/'
+		end
     end
 
 	def create
@@ -45,10 +48,14 @@ class UsersController < ApplicationController
     end
 
 	def solicitar_premium
-		@user = User.find(params[:id])
-		@user.esPremium = true
-		if @user.save
-			redirect_to @user
+		if (logged_in_user? && current_user.id == params[:id])
+			@user = User.find(params[:id])
+			@user.esPremium = true
+			if @user.save
+				redirect_to @user
+			end
+		else
+			redirect_to '/'
 		end
 	end
 
@@ -58,6 +65,7 @@ class UsersController < ApplicationController
 		else
 			@user = User.find(params[:id])
 			@user.user_configs.esPremium = true;
+			@user.user_configs.fechaPremium = Date.today;
 			if @user.user_configs.save
 				redirect_to @user
 			end
