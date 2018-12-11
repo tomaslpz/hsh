@@ -2,7 +2,7 @@
 
 <% if logged_in_admin? || logged_in_user? %>
 	<%= form_tag('/search/', method: :get) do %>
-		<div class="input-group">
+		<div class="input-group mb-3">
 			<%= text_field_tag :query, nil, :class => 'form-control rounded-0' %>
 			<div class="input-group-append">
 				<%= submit_tag 'Buscar', :class => 'btn btn-primary rounded-0' %>
@@ -11,20 +11,20 @@
 	<% end %>
 <% end %>
 
-<div class="row justify-content-md-center">
-	<div class="col-md-6">
-		<a href="/residences/<%=@r.id%>" class="cardlink">
+<div class="row justify-content-center">
+	<div class="col-6">
+		<a href="/residences/<%=@residencia.id%>" class="cardlink">
 			<div class="card box-shadow rounded-0 p-0 m-0">
-				<img class="card-img-top rounded-0" src="<%=@r.img_link%>" alt="Card image cap">
+				<img class="card-img-top rounded-0" src="<%=@residencia.img_link%>" alt="Card image cap">
 				<div class="card-body">
-					<p class="card-text"><strong><%=@r.nombre%></strong></p>
-					<p class="card-text"><%=@r.desc%></p>
+					<p class="card-text"><strong><%=@residencia.nombre%></strong></p>
+					<p class="card-text"><%=@residencia.desc%></p>
 				</div>
 			</div>
 		</a>
 	</div>
 	<% if @hotsale != nil %>
-		<div class="col-md-6">
+		<div class="col-6">
 			<a href="/blocks/<%=@hotsale.id%>" class="cardlink">
 				<div class="card box-shadow rounded-0 p-0 m-0">
 					<div class="card-img-overlay">

@@ -16,19 +16,31 @@ class UsersController < ApplicationController
 			redirect_to @user
 		else
 			render 'edit'
-        end
-    end
+		end
+	end
 
-    def edit
-    	@user = User.find(params[:id])
-    end
-
-  	def show
+	def edit
 		@user = User.find(params[:id])
+	end
+
+	def show
+
+		@user = User.find(params[:id])
+		@subastasActivas = []
+
+		@user.entries.each do |entrada|
+			if (entrada.block.estado == 1)
+				@subastasActivas.push(entrada.block)
+			end
+		end
+
+		@bloquesAdjudicados = Block.where(:adjudicadoid => @user.id)
+
 		if !(logged_in_admin? || (logged_in_user? && current_user.id == @user.id))
 			redirect_to '/'
 		end
-    end
+
+	end
 
 	def create
 		@user = User.new(user_params)
@@ -44,8 +56,8 @@ class UsersController < ApplicationController
 			redirect_to @user
 		else
 			render 'new'
-        end
-    end
+		end
+	end
 
 	def solicitar_premium
 		if (logged_in_user?)
@@ -72,11 +84,24 @@ class UsersController < ApplicationController
 		end
 	end
 
-    def user_params
-        params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :apellido, :dni, :email, :password,
-                                      :password_confirmation, :birth_date, :esPremium)
+	def remover_premium
+		if !logged_in_admin?
+			redirect_to '/'
+		else
+			@user = User.find(params[:id])
+			@user.esPremium = false;
+			@user.user_configs.esPremium = false;
+			if @user.user_configs.save && @user.save
+				redirect_to @user
+			end
+		end
 	end
-	
+
+	def user_params
+		params.require(:user).permit(:numTarjeta, :codTarjeta, :name, :apellido, :dni, :email, :password,
+											  :password_confirmation, :birth_date, :esPremium)
+	end
+
 	private
 
 	def check_login

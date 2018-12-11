@@ -1,19 +1,21 @@
-<div class="card rounded-0">
-	
-	<div class="card-header text-center">Lista de Usuarios</div>
-	
-	<div class="card-body">
-		<div class="row">
-			<div class="col-12">
-				<div class="list-group rounded-0" id="list-tab" role="tablist">
-					<% usuarios.each do |user| %>
-						<a href="/users/<%=user.id%>" class="list-group-item list-group-item-action rounded-0">
-							<div class="<%= (user.esPremium && !user.user_configs.esPremium) ? 'alert alert-success' : '' %> m-0 rounded-0"><%=user.name%></div>
-						</a>
+<div class="row">
+	<div class="col-12">
+		<ul class="list-group">
+			<li class="list-group-item rounded-0 active">Lista de usuarios</li>
+			<% usuarios.each do |user| %>
+				<li class="list-group-item rounded-0 text-capitalize">
+					<% @premiumInfo = '' %>
+					<% if (user.esPremium && !user.user_configs.esPremium) %>
+						<% @premiumInfo = '<h3 style="display: inline-block;"><span class="badge badge-info rounded-0">●</span></h3>' %>
 					<% end %>
-				</div>
-			</div>
-		</div>
+					<% if (user.esPremium && user.user_configs.esPremium && (user.user_configs.fechaPremium >> 12) < Date.today) %>
+						<% @premiumInfo = '<h3 style="display: inline-block;"><span class="badge badge-danger rounded-0">✗</span></h3>' %>
+					<% end %>
+					<a href="/users/<%=user.id%>" class="<%= @class %>">
+						<%= user.name %> <%= @premiumInfo.html_safe %>
+					</a>
+				</li>
+			<% end %>
+		</ul>
 	</div>
-
 </div>
