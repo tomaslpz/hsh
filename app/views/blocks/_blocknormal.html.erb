@@ -44,6 +44,27 @@
 			<h5>Bloque adjudicado!</h5>
 
 		<% else %>
+			<% if current_user.user_configs.esPremium %>
+
+				<% if current_user.user_configs.creditos > 0 %>
+				<!-- Falta lo de los creditos-->
+				<%= form_for(block) do |formulario| %>
+
+					<%= formulario.hidden_field :adjudicado, :value => current_user.email %>
+					<%= formulario.hidden_field :adjudicado_id, :value => current_user.id %>
+
+					<div class="input-group-append p-0 m-0 col-6">
+						<%= formulario.submit "Adjudicarme este bloque!", class: 'btn btn-success rounded-0' %>
+					</div>
+					<br>
+
+				<% end #formulario %>
+
+				<%else #creditos%>
+
+				<%end%>
+
+		<% else %>
 
 			<% if block.entries.where(:email => current_user.email).first == nil %>
 
@@ -58,12 +79,14 @@
 					</div>
 				<% end %>
 
+
 			<% else %>
 
 				<a href="/blocks/id/<%=block.id%>/uid/<%=current_user.id%>" class= 'btn btn-danger col-6 rounded-0'>Salir Subasta</a>
 
 			<% end %>
-		
+			<% end %>
+
 		<% end %>
 
 	<% end %>
