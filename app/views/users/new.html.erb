@@ -10,41 +10,72 @@
     </div>
 
 
-  <div class="col-md-6">
+  <div class="container">
 
-    <h1>Unite a nuestra comunidad!</h1>
+
+    <div class="alert alert-primary" role="alert">
+      <h4 class="alert-heading">Únete a nuestra comunidad!</h4>
+      <p>Formando parte de Home Switch Home, tendras los beneficios de participar en subastas/hotsales, buscar residencias y la posibilidad de ser un usuario Premium con beneficios extras.</p>
+      <hr>
+    </div>
 
     <%= form_for(@user) do |f| %>
     	<%= render 'shared/error_messages', user: @user %>
 
-		<%= f.label :name, 'Nombre' %>
-		<%= f.text_field :name, class: 'form-control', required:true %>
 
-		<%= f.label :apellido, 'Apellido' %>
-		<%= f.text_field :apellido, class: 'form-control', required:true %>
+        <div class="form-group form-row">
 
-		<%= f.label :email, 'Email' %>
-		<%= f.email_field :email, class: 'form-control', required:true %>
-		
-		<%= f.label :dni, 'DNI' %>
-		<%= f.text_field :dni, class: 'form-control', required:true, minlength:7, maxlength:8 %>
+          <div class="col">
+		      <%= f.text_field :name, class: 'form-control', required:true, placeholder: 'Nombre' %>
+          </div>
+          <div class="col">
+		      <%= f.text_field :apellido, class: 'form-control', required:true, placeholder: 'Apellido' %>
+          </div>
 
-		<%= f.label :birth_date, 'Fecha de nacimiento' %>
-		<%= f.date_field :birth_date, class: 'form-control', required:true, max:(Date.today << 12*18).to_date %>
+        </div>
+
+        <div class="form-group">
+            <br>
+            <%= f.email_field :email, class: 'form-control', required:true, placeholder: 'Email' %>
+        </div>
+
+        <div class="form-group">
+            <br>
+            <%= f.text_field :dni, class: 'form-control', required:true, minlength:7, maxlength:8, placeholder: 'DNI' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :birth_date, 'Fecha de nacimiento' %>
+            <%= f.date_field :birth_date, class: 'form-control', required:true, max:(Date.today << 12*18).to_date %>
+        </div>
 
 
-		<%= f.label :numTarjeta, 'Número de tarjeta' %>
-		<%= f.text_field :numTarjeta, class: 'form-control', required:true, maxlength: 16, minlength: 16 %>
+        <div class="form-group form-row">
+          <div class="col">
+            <br>
+	           <%= f.text_field :numTarjeta, class: 'form-control', required:true, maxlength: 16, minlength: 16, placeholder: 'Número de Tarjeta' %>
+          </div>
 
-		<%= f.label :codTarjeta, 'Código de Tarjeta' %>
-		<%= f.password_field :codTarjeta, class: 'form-control', required:true, maxlength: 3, minlength:3 %>
+          <div class="col">
+            <br>
+            <%= f.password_field :codTarjeta, class: 'form-control', required:true, maxlength: 3, minlength:3, placeholder: 'Código de Tarjeta' %>
+          </div>
 
+        </div>
 
-		<%= f.label :password, 'Contraseña'%>
-		<%= f.password_field :password, class: 'form-control', required:true, minlength: 6 %>
+		   <div class="form-group form-row">
+         <div class="col">
+           <br>
+           <%= f.password_field :password, class: 'form-control', required:true, minlength: 6, placeholder: 'Contraseña' %>
+         </div>
 
-		<%= f.label :password_confirmation, 'Repetir contraseña' %>
-		<%= f.password_field :password_confirmation, class: 'form-control', required:true, minlength: 6  %>
+         <div class="col">
+           <br>
+           <%= f.password_field :password_confirmation, class: 'form-control', required:true, minlength: 6, placeholder: 'Repetir Contraceña' %>
+         </div>
+
+       </div>
+
 
 		<%= f.hidden_field :esPremium, :value => false %>
 
