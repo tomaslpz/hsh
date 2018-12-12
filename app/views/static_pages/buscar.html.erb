@@ -1,0 +1,77 @@
+<% provide(:title , 'Busqueda') %>
+
+<%= form_tag('/search/', method: :get) do %>
+	<div class="input-group mb-3">
+		<%= text_field_tag :query, nil, :class => 'form-control rounded-0' %>
+		<div class="input-group-append">
+			<%= submit_tag 'Buscar', :class => 'btn btn-primary rounded-0' %>
+		</div>
+	</div>
+<% end %>
+
+<div class="row justify-content-md-center">
+	<div class="col-4">
+		<ul class="list-group">
+			<li class="list-group-item rounded-0 active">Residencias</li>
+			<% @residencias.each do |residencia| %>
+				<li class="list-group-item rounded-0 text-capitalize">
+					<a href="/residences/<%= residencia.id %>">
+						<%= resaltar(@query, residencia.nombre).html_safe %>
+					</a>
+					<br>
+					<small class="text-muted">
+						<%= resaltar(@query, residencia.ciudad).html_safe %>,
+						<%= resaltar(@query, residencia.partido).html_safe %>,
+						<%= resaltar(@query, residencia.provincia).html_safe %>
+					</small>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="col-4">
+		<ul class="list-group">
+			<li class="list-group-item rounded-0 active">Subastas</li>
+			<% @subastas.each do |subasta| %>
+				<li class="list-group-item rounded-0 text-capitalize">
+					<a href="/blocks/<%= subasta.id %>">
+						<%= resaltar(@query, subasta.residence.nombre).html_safe %>
+						<span class="badge badge-info rounded-0"><%= subasta.fecha %></span>
+						<% @maxpuja = subasta.bids.order(valor: :desc).first %>
+						<span class="badge badge-success rounded-0">
+							<% if @maxpuja != nil %>
+								<%= @maxpuja.valor %>
+							<% else %>
+								<%= subasta.precio %>
+							<% end %>
+						</span>
+					</a>
+					<br>
+					<small class="text-muted">
+						<%= resaltar(@query, subasta.residence.ciudad).html_safe %>,
+						<%= resaltar(@query, subasta.residence.partido).html_safe %>,
+						<%= resaltar(@query, subasta.residence.provincia).html_safe %>
+					</small>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="col-4">
+		<ul class="list-group">
+			<li class="list-group-item rounded-0 active">Hotsales</li>
+			<% @hotsales.each do |hotsale| %>
+				<li class="list-group-item rounded-0 text-capitalize">
+					<a href="/blocks/<%= hotsale.id %>">
+						<%= resaltar(@query, hotsale.residence.nombre).html_safe %>
+						<span class="badge badge-info rounded-0"><%= hotsale.fecha %></span>
+					</a>
+					<br>
+					<small class="text-muted">
+						<%= resaltar(@query, hotsale.residence.ciudad).html_safe %>,
+						<%= resaltar(@query, hotsale.residence.partido).html_safe %>,
+						<%= resaltar(@query, hotsale.residence.provincia).html_safe %>
+					</small>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

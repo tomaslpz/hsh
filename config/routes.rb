@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-	get 'search/(:query)', controller: 'residences', action: 'buscar'
+	get 'search/(:query)', controller: 'static_pages', action: 'buscar'
 	get 'users/new'
 
 	resources :users
 
 	get 'users(/id/:id)/s', controller: 'users', action: 'solicitar_premium'
 	get 'users(/id/:id)/p', controller: 'users', action: 'autorizar_premium'
+	get 'users(/id/:id)/r', controller: 'users', action: 'remover_premium'
 
 	resources :bids
 

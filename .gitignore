@@ -32,3 +32,5 @@
 
 #para que no sincronice
 #/config/database.yml
+
+*.swp

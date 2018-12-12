@@ -71,11 +71,6 @@ class ResidencesController < ApplicationController
 		end
 	end
 
-	def buscar
-		redirect_to Residence.where(:nombre => params[:query]).first
-	end
-
-
 	private
 
 	def logged_in
